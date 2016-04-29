@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+</h:head>
+<ui:composition template="/templates/layout.xhtml">
+	<ui:define name="titulo"> Cadastrar Autor </ui:define>
+	
+	<ui:define name="corpo">
+		<h:form id="formAutor">
+			<h:panelGrid id="gridDados" columns="2"	columnClasses="colunaLabel,colunaInput">
+			
+				<p:outputLabel  value="Autor:" />
+				<p:inputText  value="#{autorController.autor.nome}" size="25"  />
+				<p:outputLabel id="lblNascimento" value="Data de Nascimento" for="txtNascimento" styleClass="labelSite" />
+					<p:inputMask id="txtNascimento" mask="99/99/9999"
+						value="#{autorController.autor.dataNascimento}"
+						styleClass="inputSite" size="10" >
+						<f:convertDateTime pattern="dd/MM/yyyy" locale="pt_BR" />
+					</p:inputMask>
+				<p:outputLabel id="lblFalecimento" value="Data de Falecimento" for="txtFalecimento" styleClass="labelSite" />
+					<p:inputMask id="txtFalecimento" mask="99/99/9999"
+						value="#{autorController.autor.dataFalecimento}"
+						styleClass="inputSite" size="10" >
+						<f:convertDateTime pattern="dd/MM/yyyy" locale="pt_BR" />
+					</p:inputMask>
+				
+				<p:outputLabel  value="Local de Nascimento:" />
+				<p:inputText  value="#{autorController.autor.localNascimento}" size="25"  />
+				<p:outputLabel  value="Local de Falecimento:" />
+				<p:inputText  value="#{autorController.autor.localFalecimento}" size="25"  />
+				<p:outputLabel  value="Biografia:" />
+				<p:inputTextarea  value="#{autorController.autor.biografia}" cols="60" rows="10" />
+				
+				<p:commandButton value="Cadastrar" ajax="false" action="#{autorController.cadastrar}"/>
+				<p:commandButton value="Voltar" immediate="true" action="consultarAutor.xhtml?faces-redirect=true"/>
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

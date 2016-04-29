@@ -1,0 +1,29 @@
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="hibernate.connection.password">123</property>
+		<property name="hibernate.connection.url">jdbc:mysql://localhost/LivrariaBD</property>
+		<property name="hibernate.connection.username">root</property>
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
+		
+		<property name="hibernate.show_sql">true</property>
+		<property name="hibernate.format_sql">true</property>
+		
+<!-- 		<property name="hibernate.hbm2ddl.auto">create</property>   -->
+		
+		<mapping class="br.com.livraria.model.Autor" />
+		<mapping class="br.com.livraria.model.Cliente" />
+		<mapping class="br.com.livraria.model.Editora" />
+		<mapping class="br.com.livraria.model.Livro" />
+		<mapping class="br.com.livraria.model.Pedido" />
+		<mapping class="br.com.livraria.model.Usuario" />
+		<mapping class="br.com.livraria.model.Venda" />
+		<mapping class="br.com.livraria.model.CartaoCredito" />
+		<mapping class="br.com.livraria.model.Deposito" />
+		<mapping class="br.com.livraria.model.Promocao" />
+		<mapping class="br.com.livraria.model.Administrador" />
+		<mapping class="br.com.livraria.model.Carrinho" />
+		
+	</session-factory>
+</hibernate-configuration>

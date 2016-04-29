@@ -1,0 +1,107 @@
+@CHARSET "UTF-8";
+
+@CHARSET "UTF-8";
+
+/*ESTILOS PRIMEFACES*/
+.ui-widget, .ui-widget .ui-widget {
+	font-size: 10pt !important;
+	font-family: arial;
+	font-weight: bold;;
+}
+
+.ui-selectonemenu {
+	width: 170px !important;
+}
+
+body {
+	background-image: url("../resources/IMG/fundo.jpg");
+	background-repeat: repeat;
+}
+
+.colunaFiltro{
+	width: 170px;
+	height: 100%;
+}
+.colunaBusca{
+	width: 800px;
+}
+
+.corpo {
+	width: 1000px;
+	/*sombra e arredondamento da div*/
+	box-shadow: 0px 0px 28px 0px rgba(0, 0, 0, 0.81);
+	background-color: white;
+	border-radius: 10px 10px 10px 10px;
+	/*centralizar div*/
+	position: relative;
+	margin-left: -500px;
+	left: 50%;
+	/*margens da div*/
+	margin-bottom: 20px;
+	margin-top: 20px;
+	/*espaço interno*/
+	padding: 10px 10px 10px 10px;
+}
+
+.gridCabecalho {
+	width: 100%;
+}
+
+.barraMenu {
+	width: 100%;
+}
+
+.colunaLabel {
+	float: right;
+}
+
+.logotipo {
+	position: relative;
+	margin-left: -150px;
+	left: 50%;
+}
+
+.espacoDiv50 {
+	width: 50px;
+	text-align: left;
+	margin-top: 0px;
+	left: 0px;
+}
+
+.espacoDiv100 {
+	width: 100%;
+	text-align: left;
+	left: 0px;
+}
+
+.titulo1 {
+	font-size: 20pt;
+	color: red;
+	font-weight: bold;
+	font-family: arial;
+}
+
+.texto1 {
+	font-size: 12pt;
+	color: black;
+	font-family: arial;
+}
+
+.texto2 {
+	font-size: 12pt;
+	color: black;
+	font-weight: bold;
+	font-family: arial;
+}
+
+.textoDestaque {
+	font-size: 20pt;
+	color: blue;
+	font-weight: bold;
+	font-family: arial;
+}
+
+.login-left{
+	/*color:blue;*/
+	color:#FF6347;
+}

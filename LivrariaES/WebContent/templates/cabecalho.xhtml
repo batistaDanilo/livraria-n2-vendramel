@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</h:head>
+<h:body>
+	<h:form id="formCabecalho">
+		<h:panelGrid columns="1" columnClasses="barraMenu"
+			styleClass="gridCabecalho">
+			<p:menubar autoDisplay="true">
+				<p:menuitem value="Início" action="/inicial.xhtml" styleClass="subItemMenu" />
+				<p:menuitem value="Ranking" styleClass="subItemMenu" url="/ranking.xhtml" />
+				<p:menuitem value="Buscar" styleClass="subItemMenu" url="/buscar.xhtml" />
+				<p:menuitem value="Sobre" styleClass="subItemMenu" url="/sobre.xhtml"/>
+				<p:menuitem value="Ajuda" styleClass="subItemMenu" />
+				<p:menuitem value="Cadastre-se" styleClass="subItemMenu" url="/cadastrar.xhtml" />
+				<p:menuitem value="Profissional" styleClass="subItemMenu" url="/cadastrarProfissional.xhtml" />
+			</p:menubar>
+		</h:panelGrid>
+	</h:form>
+</h:body>
+</html>

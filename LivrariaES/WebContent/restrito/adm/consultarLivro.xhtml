@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+</h:head>
+<ui:composition template="/templates/layout.xhtml">
+	<ui:define name="titulo"> Consultar Livro </ui:define>
+	
+	<ui:define name="corpo">
+		<h:form id="formLivro">
+			<p:messages closable="true" />
+			<p:commandButton value="Novo Livro" action="#{livroController.novo}"/>
+			<p:dataTable id="gridDados" value="#{livroController.listaLivro}" var="livro">
+				<p:column headerText="Descrição">
+					<p:outputLabel value="#{livro.titulo}"/>
+				</p:column>
+				<p:column headerText="Autor">
+					<p:outputLabel value="#{livro.autor.nome}"/>
+				</p:column>
+				<p:column headerText="Editora">
+					<p:outputLabel value="#{livro.editora.nome}"/>
+				</p:column>
+				<p:column headerText="Ação">
+					<p:commandButton value="Editar" action="#{livroController.editar(livro)}"/>
+					<p:commandButton value="Excluir" actionListener="#{livroController.excluir(livro)}" update="gridDados">
+						<p:confirm header="Aviso" message="Deseja realmente excluir o Livro?"/>
+					</p:commandButton>
+				</p:column>
+			</p:dataTable>
+			
+			<p:confirmDialog global="true" showEffect="fade" hideEffect="explode">
+				<p:commandButton value="Sim" type="button"
+					styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+				<p:commandButton value="Não" type="button"
+					styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+			</p:confirmDialog>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

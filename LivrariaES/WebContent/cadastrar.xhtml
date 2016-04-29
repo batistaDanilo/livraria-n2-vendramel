@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+</h:head>
+<ui:composition template="/templates/layout.xhtml">
+	<ui:define name="titulo">Cadastre-se</ui:define>
+	
+	<ui:define name="corpo">
+		<h:form>
+			<p:messages closable="true" showDetail="false" showIcon="true"
+				autoUpdate="true" />
+
+			<p:fieldset legend="Dados Básicos">
+				<h:panelGrid id="gridDados" columns="2"	columnClasses="colunaLabel,colunaInput">
+					
+					<p:outputLabel id="lblCPF" value="CPF:" for="txtCPF" styleClass="labelSite" />
+					<p:inputMask id="txtCPF" value="#{cliCadastrarClienteBean.cliente.cpf}" mask="999.999.999-99"
+						styleClass="inputSite" size="13" converter="retirarMascarasString">
+					</p:inputMask>
+					
+					<p:outputLabel id="lblNome" value="Nome:" for="txtNOME"	styleClass="labelSite" />
+					<p:inputText id="txtNOME" value="#{cliCadastrarClienteBean.cliente.nome}"
+						styleClass="inputSite" size="13"  />
+
+					<p:outputLabel id="lblSOBRENOME" value="Sobrenome:"	for="txtSobrenome" styleClass="labelSite" />
+					<p:inputText id="txtSobrenome" value="#{cliCadastrarClienteBean.cliente.sobrenome}"
+						styleClass="inputSite" size="30"  />
+
+					<p:outputLabel id="lblNascimento" value="Data de Nascimento" for="txtNascimento" styleClass="labelSite" />
+					<p:inputMask id="txtNascimento" mask="99/99/9999"
+						value="#{cliCadastrarClienteBean.cliente.dataNascimento}"
+						styleClass="inputSite" size="10" >
+						<f:convertDateTime pattern="dd/MM/yyyy" locale="pt_BR" />
+					</p:inputMask>
+
+					<p:outputLabel id="lblLogradouro" value="Logradouro:" for="txtLogradouro" styleClass="labelSite" />
+					<p:inputText id="txtLogradouro"	value="#{cliCadastrarClienteBean.cliente.logadouro}"
+						styleClass="inputSite" size="30"  />
+
+					<p:outputLabel id="lblNumero" value="Número:" for="txtNumero" styleClass="labelSite" />
+					<p:inputMask mask="9?9999" id="txtNumero"	value="#{cliCadastrarClienteBean.cliente.numero}"
+						styleClass="inputSite" converter="retirarMascarasNumero" size="5">
+					</p:inputMask>
+
+					<p:outputLabel id="lblComplemento" value="Complemento:"	for="txtComplemento" styleClass="labelSite" />
+					<p:inputText id="txtComplemento" value="#{cliCadastrarClienteBean.cliente.complemento}"
+						styleClass="inputSite" size="30" />
+
+					<p:outputLabel id="lblBairro" value="Bairro:" for="txtBairro" styleClass="labelSite" />
+					<p:inputText id="txtBairro"	value="#{cliCadastrarClienteBean.cliente.bairro}"
+						styleClass="inputSite" size="30"  />
+
+					<p:outputLabel id="lblCEP" value="CEP:" for="txtCEP" styleClass="labelSite" />
+					<p:inputMask id="txtCEP" value="#{cliCadastrarClienteBean.cliente.cep}" mask="99999-999"
+						converter="retirarMascarasNumero" styleClass="inputSite" size="8" />
+
+					<p:outputLabel id="lblCidade" value="Cidade:" for="txtCidade" styleClass="labelSite" />
+					<p:inputText id="txtCidade"	value="#{cliCadastrarClienteBean.cliente.cidade}"
+						styleClass="inputSite" size="30"  />
+
+					<p:outputLabel id="lblUF" value="UF:" for="txtUF" styleClass="labelSite" />
+					<p:selectOneMenu id="txtUF" value="#{cliCadastrarClienteBean.cliente.uf}" styleClass="inputSite">
+						<f:selectItem noSelectionOption="true" itemLabel="Selecione um Estado" />
+						<f:selectItem itemLabel="Acre" itemValue="AC" />
+						<f:selectItem itemLabel="Alagoas" itemValue="AL" />
+						<f:selectItem itemLabel="Amapá" itemValue="AP" />
+						<f:selectItem itemLabel="Amazonas" itemValue="AM" />
+						<f:selectItem itemLabel="Bahia" itemValue="BA" />
+						<f:selectItem itemLabel="Ceará" itemValue="CE" />
+						<f:selectItem itemLabel="Distrito Federal" itemValue="DF" />
+						<f:selectItem itemLabel="Espirito Santo" itemValue="ES" />
+						<f:selectItem itemLabel="Goiás" itemValue="GO" />
+						<f:selectItem itemLabel="Rio de Janeiro" itemValue="RJ" />
+						<f:selectItem itemLabel="Minas Gerais" itemValue="MG" />
+						<f:selectItem itemLabel="Maranhão" itemValue="MA" />
+						<f:selectItem itemLabel="Mato Grosso do Sul" itemValue="MS" />
+						<f:selectItem itemLabel="Mato Grosso" itemValue="MT" />
+						<f:selectItem itemLabel="Rio Grande do Norte" itemValue="RN" />
+						<f:selectItem itemLabel="Rio Grande do Sul" itemValue="RS" />
+						<f:selectItem itemLabel="Pará" itemValue="PA" />
+						<f:selectItem itemLabel="Paraíba" itemValue="PB" />
+						<f:selectItem itemLabel="Paraná" itemValue="PR" />
+						<f:selectItem itemLabel="Pernambuco" itemValue="PE" />
+						<f:selectItem itemLabel="Piauí" itemValue="PI" />
+						<f:selectItem itemLabel="Santa Catarina" itemValue="SC" />
+						<f:selectItem itemLabel="São Paulo" itemValue="SP" />
+						<f:selectItem itemLabel="Sergipe" itemValue="SE" />
+						<f:selectItem itemLabel="Tocantins" itemValue="TO" />
+					</p:selectOneMenu>
+				</h:panelGrid>
+			</p:fieldset>
+			
+			<p:fieldset legend="Contato">
+				<h:panelGrid id="gridContato" columns="2" columnClasses="colunaLabel,colunaInput">
+				
+					<p:outputLabel id="lblTelefone" value="Telefone:" for="txtTelefone"	styleClass="labelSite" />
+					<p:inputMask id="txtTelefone" mask="(99) 9999-9999"	value="#{cliCadastrarClienteBean.cliente.telefone}"
+						styleClass="inputSite" converter="retirarMascarasString" size="13">
+					</p:inputMask>
+
+					<p:outputLabel id="lblCelular" value="Celular:" for="txtCelular" styleClass="labelSite" />
+					<p:inputMask id="txtCelular" mask="(99) 99999-9999"	value="#{cliCadastrarClienteBean.cliente.celular}"
+						styleClass="inputSite" converter="retirarMascarasString" size="13"/>
+
+					<p:outputLabel id="lblEmail" value="Email:" for="txtEmail" styleClass="labelSite" />
+					<p:inputText id="txtEmail" value="#{cliCadastrarClienteBean.cliente.email}"
+						styleClass="inputSite" size="30"  />
+
+					<p:outputLabel id="lblTelefoneRecado" value="Telefone para Recado:"
+						for="txtTelefoneRecado" styleClass="labelSite" />
+					<p:inputMask id="txtTelefoneRecado" mask="(99) 9999-9999" value="#{cliCadastrarClienteBean.cliente.telRecado}"
+						styleClass="inputSite" converter="retirarMascarasString" size="13"/>
+
+					<p:outputLabel id="lblNomeRecado" value="Nome para Recado" for="txtNomeRecado" styleClass="labelSite" />
+					<p:inputText id="txtNomeRecado"	value="#{cliCadastrarClienteBean.cliente.nomeRecado}"
+						styleClass="inputSite" size="30" />
+				</h:panelGrid>
+			</p:fieldset>
+			
+			<p:fieldset legend="Segurança">
+			
+				<h:panelGrid columns="2" columnClasses="colunaLabel,colunaInput">
+				
+					<p:outputLabel id="lblSenha" value="Senha:" for="txtSenha" styleClass="labelSite" />
+					<p:password id="txtSenha" feedback="true" strongLabel="Bom"
+						weakLabel="Fraco" goodLabel="Médio" match="txtConfirmar" styleClass="inputSite"  />
+						
+					<p:outputLabel id="lblConfirmar" value="Confirmar Senha:"
+						for="txtConfirmar" styleClass="labelSite" />
+					<p:password id="txtConfirmar" feedback="true" strongLabel="Bom"
+						weakLabel="Fraco" value="#{cliCadastrarClienteBean.cliente.senha}"
+						goodLabel="Médio" styleClass="inputSite" />
+				</h:panelGrid>
+			</p:fieldset>
+			
+			<p:commandButton value="Cadastrar" ajax="false" actionListener="#{cliCadastrarClienteBean.cadastrar}" />
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

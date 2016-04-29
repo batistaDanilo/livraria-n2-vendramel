@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+</h:head>
+<ui:composition template="/templates/layout.xhtml">
+	<ui:define name="titulo"> Login </ui:define>
+
+	<ui:define name="corpo">
+		<h:form>
+			<h:panelGrid columns="3">
+				<p:outputLabel id="lblPerfil" value="Perfil:" for="rbtPerfil" 
+					styleClass="labelSite" />
+				<p:inputSwitch id="rbtPerfil" onLabel="Cliente" offLabel="Profissional" value="#{loginBean.eCliente}"/>
+				<span class="login-left">Selecione o seu perfil: Cliente ou Profissional - para alterar a escolha, basta clicar sobre o botão</span>
+			</h:panelGrid>
+			
+			<h:panelGrid columns="2">		
+				<p:outputLabel id="lblEmail" value="E-Mail:" for="txtEmail" styleClass="labelSite" />
+				<p:inputText id="txtEmail" value="#{loginBean.email}" requiredMessage="E-mail é obrigatório!" styleClass="inputSite" required="true" />
+
+				<p:outputLabel id="lblSenha" value="Senha:" for="txtSenha" styleClass="labelSite" />
+				<p:password id="txtSenha" value="#{loginBean.senha}" requiredMessage="Senha é obrigatória!" styleClass="inputSite" required="true" />
+			</h:panelGrid>		
+
+			<p:commandButton value="Entrar" ajax="false" action="#{loginBean.acessoPublico}" update=":formCabecalho"/>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

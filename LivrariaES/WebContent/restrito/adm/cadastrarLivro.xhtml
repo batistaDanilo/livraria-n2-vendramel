@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+</h:head>
+<ui:composition template="/templates/layout.xhtml">
+	<ui:define name="titulo"> Cadastrar Livro </ui:define>
+	
+	<ui:define name="corpo">
+		<h:form id="formLivro">
+			<h:panelGrid id="gridDados" columns="2"	columnClasses="colunaLabel,colunaInput">
+			
+				<p:outputLabel  value="Titulo:" />
+				<p:inputText  value="#{livroController.livro.titulo}" size="13"  />
+				<p:outputLabel  value="ISBN:" />
+				<p:inputText  value="#{livroController.livro.isbn}" size="13"  />
+				<p:outputLabel  value="Data de Publicação:" />
+				<p:inputMask  value="#{livroController.livro.dataPublicacao}" size="13" mask="99/99/9999">
+					<f:convertDateTime pattern="dd/mm/yyyy" locale="pt_BR"/>
+				</p:inputMask>
+				<p:outputLabel  value="Categoria:" />
+				<p:selectOneMenu value="#{livroController.livro.categoria}"  styleClass="inputSite">
+					<f:selectItem itemLabel="Selecione" noSelectionOption="true"/>
+					<f:selectItem itemLabel="Romance" itemValue="Romance" />
+					<f:selectItem itemLabel="Drama" itemValue="Drama"/>
+					<f:selectItem itemLabel="Ficção" itemValue="Ficção"/>
+					<f:selectItem itemLabel="Comédia" itemValue="Comédia"/>
+					<f:selectItem itemLabel="Terror" itemValue="Terror"/>
+				</p:selectOneMenu>
+				<p:outputLabel  value="Resumo:" />
+				<p:inputTextarea  value="#{livroController.livro.resumo}" cols="60" rows="10"  />
+				<p:outputLabel  value="Índice:" />
+				<p:inputTextarea  value="#{livroController.livro.indice}" cols="60" rows="10" />
+				<p:outputLabel  value="Preço de Custo:" />
+				<p:inputText  value="#{livroController.livro.precoCusto}" size="13" >
+					<f:convertNumber locale="pt_BR" maxFractionDigits="2" minFractionDigits="2"/>
+				</p:inputText>
+				<p:outputLabel  value="Margem de Lucro %:" />
+				<p:inputText  value="#{livroController.livro.margemLucro}" size="13">
+					<f:convertNumber locale="pt_BR"/>
+				</p:inputText>
+				<p:outputLabel  value="Quantidade:"/>
+				<p:inputText  value="#{livroController.livro.quantidade}" size="13">
+					<f:convertNumber locale="pt_BR"/>
+				</p:inputText>
+				<p:outputLabel  value="Editora:" />
+				<p:selectOneMenu id="cmbEditora" value="#{livroController.livro.editora}"  required="true" requiredMessage="Selecione uma Editora">
+					<f:selectItem itemLabel="Selecione" noSelectionOption="true"/>
+					<f:selectItems value="#{livroController.listaEditora}" var="editora" itemLabel="#{editora.nome}" itemValue="#{editora}"/>
+				</p:selectOneMenu>
+				<p:outputLabel  value="Autor:" />
+				<p:selectOneMenu id="cmbAutor" value="#{livroController.livro.autor}"  required="true" requiredMessage="Selecione um Autor">
+					<f:selectItem itemLabel="Selecione" noSelectionOption="true"/>
+					<f:selectItems value="#{livroController.listaAutor}" var="autor" itemLabel="#{autor.nome}" itemValue="#{autor}"/>
+				</p:selectOneMenu>
+				
+				<p:commandButton value="Cadastrar" ajax="false" action="#{livroController.cadastrar}"/>
+				<p:commandButton value="Voltar" immediate="true" action="consultarLivro.xhtml?faces-redirect=true"/>
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

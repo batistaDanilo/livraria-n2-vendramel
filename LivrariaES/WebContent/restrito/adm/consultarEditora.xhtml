@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+</h:head>
+<ui:composition template="/templates/layout.xhtml">
+	<ui:define name="titulo"> Cadastrar Editora </ui:define>
+	
+	<ui:define name="corpo">
+		<h:form id="formEditora">
+			<p:messages closable="true" />
+			<p:commandButton value="Nova Editora" action="#{editoraController.novo}"/>
+			<p:dataTable id="gridDados" value="#{editoraController.listaEditora}" var="editora">
+				<p:column headerText="CNPJ">
+					<p:outputLabel value="#{editora.cnpj}"/>
+				</p:column>
+				<p:column headerText="Nome">
+					<p:outputLabel value="#{editora.nome}"/>
+				</p:column>
+				<p:column headerText="Telefone">
+					<p:outputLabel value="#{editora.telefone}"/>
+				</p:column>
+				<p:column headerText="Ação">
+					<p:commandButton value="Editar" action="#{editoraController.editar(editora)}"/>
+					<p:commandButton value="Excluir" actionListener="#{editoraController.excluir(editora)}" update="gridDados">
+						<p:confirm header="Aviso" message="Deseja realmente excluir a editora #{editora.nome}?"/>
+					</p:commandButton>
+				</p:column>
+			</p:dataTable>
+			
+			<p:confirmDialog global="true" showEffect="fade" hideEffect="explode">
+				<p:commandButton value="Sim" type="button"
+					styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+				<p:commandButton value="Não" type="button"
+					styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+			</p:confirmDialog>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

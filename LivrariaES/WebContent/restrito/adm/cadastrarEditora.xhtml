@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+</h:head>
+<ui:composition template="/templates/layout.xhtml">
+	<ui:define name="titulo"> Cadastrar Editora </ui:define>
+	
+	<ui:define name="corpo">
+		<h:form id="formEditora">
+			<h:panelGrid id="gridDados" columns="2"	columnClasses="colunaLabel,colunaInput">
+			
+				<p:outputLabel  value="Editora:" />
+				<p:inputText  value="#{editoraController.editora.nome}" size="13"  />
+				<p:outputLabel  value="CNPJ:" />
+				<p:inputText  value="#{editoraController.editora.cnpj}" size="18"  />
+				<p:outputLabel  value="Endereço:" />
+				<p:inputText  value="#{editoraController.editora.endereco}" size="25"  />
+				<p:outputLabel id="lblTelefone" value="Telefone" for="txtTelefone" styleClass="labelSite" />
+					<p:inputMask id="txtTelefone" mask="(99)9999-9999"
+						value="#{editoraController.editora.telefone}"
+						styleClass="inputSite" size="13" >
+					</p:inputMask>
+				
+				<p:commandButton value="Cadastrar" ajax="false" action="#{editoraController.cadastrar}"/>
+				<p:commandButton value="Voltar" immediate="true" action="consultarEditora.xhtml?faces-redirect=true"/>
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

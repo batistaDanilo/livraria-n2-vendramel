@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+</h:head>
+<ui:composition template="/templates/layout.xhtml">
+	<ui:define name="titulo"> Solicitar Orçamento </ui:define>
+	
+	<ui:define name="corpo">
+		<h:form >
+			<p:outputLabel value="Serviços selecionados:"/>
+			<p:dataTable id="gridDados" value="#{cliGerarOrcamentoBean.listaServicoPreco}" var="servico">
+				<p:column headerText="Serviço">
+					<p:outputLabel value="#{servico.servicoProfissional.servico.descricao}"/>
+				</p:column>
+				<p:column headerText="Preço">
+					<p:outputLabel value="#{servico.preco}"/>
+				</p:column>
+				<p:column headerText="Ação">
+					<p:commandButton value="Excluir" actionListener="#{cliGerarOrcamentoBean.excluir(servico)}" >
+						<p:confirm header="Aviso" message="Deseja realmente excluir a serviço ?"/>
+					</p:commandButton>
+				</p:column>
+			</p:dataTable>
+			<h:panelGrid columns="2">
+				<p:outputLabel value="Profissional:"/>
+				<p:outputLabel value="#{cliGerarOrcamentoBean.profissional.nome} #{cliGerarOrcamentoBean.profissional.sobrenome}"/>
+				
+				<p:outputLabel value="Preço Total:"/>
+				<p:outputLabel value="#{cliGerarOrcamentoBean.orcamento.precoTotal}"/>
+				
+				<p:outputLabel value="Comentários:"/>
+				<p:inputTextarea rows="10" value="#{cliGerarOrcamentoBean.orcamento.comentarios}"/>
+				
+				<p:commandButton value="Solicitar" action="#{cliGerarOrcamentoBean.cadastrar}"/>
+			</h:panelGrid>
+			<p:confirmDialog global="true" showEffect="fade" hideEffect="explode">
+				<p:commandButton value="Sim" type="button"
+					styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+				<p:commandButton value="Não" type="button"
+					styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+			</p:confirmDialog>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>
