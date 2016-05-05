@@ -13,13 +13,12 @@
 		<h:panelGrid columns="1" columnClasses="barraMenu"
 			styleClass="gridCabecalho">
 			<p:menubar autoDisplay="true">
-				<p:menuitem value="Início" action="/inicial.xhtml" styleClass="subItemMenu" />
-				<p:menuitem value="Ranking" styleClass="subItemMenu" url="/ranking.xhtml" />
-				<p:menuitem value="Buscar" styleClass="subItemMenu" url="/buscar.xhtml" />
-				<p:menuitem value="Sobre" styleClass="subItemMenu" url="/sobre.xhtml"/>
-				<p:menuitem value="Ajuda" styleClass="subItemMenu" />
-				<p:menuitem value="Cadastre-se" styleClass="subItemMenu" url="/cadastrar.xhtml" />
-				<p:menuitem value="Profissional" styleClass="subItemMenu" url="/cadastrarProfissional.xhtml" />
+				<p:menuitem value="Consultar Autor" action="/restrito/adm/consultarAutor.xhtml" styleClass="subItemMenu" />
+				<p:menuitem value="Consultar Editora" styleClass="subItemMenu" url="/restrito/adm/consultarEditora.xhtml" />
+				<p:menuitem value="Consultar Livro" styleClass="subItemMenu" url="/restrito/adm/consultarLivro.xhtml" />
+				<p:menuitem value="Pedidos" styleClass="subItemMenu" url="/restrito/adm/pedidos.xhtml"/>
+				<p:menuitem value="Solicitações" styleClass="subItemMenu" url="/restrito/adm/solicitacoes.xhtml" />
+				<p:menuitem value="Usuários" styleClass="subItemMenu" url="/restrito/adm/usuarios.xhtml" />
 			</p:menubar>
 		</h:panelGrid>
 	</h:form>
