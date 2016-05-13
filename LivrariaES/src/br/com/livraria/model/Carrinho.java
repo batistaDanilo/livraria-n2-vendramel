@@ -25,10 +25,6 @@ public class Carrinho {
 	@NotNull(message="Quantidade é obrigatório!")
 	private Integer quantidade;
 	
-	@OneToOne
-	@NotNull(message="Cliente é obrigatório!")
-	private Cliente cliente;
-	
 	@ManyToOne
 	private Pedido pedido;
 	
@@ -56,15 +52,7 @@ public class Carrinho {
 	public void setQuantidade(Integer quantidade) {
 		this.quantidade = quantidade;
 	}
-
-	public Cliente getCliente() {
-		return cliente;
-	}
-
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
-	}
-
+	
 	public Pedido getPedido() {
 		return pedido;
 	}

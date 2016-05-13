@@ -15,6 +15,7 @@ import br.com.livraria.model.Carrinho;
 import br.com.livraria.model.Cliente;
 import br.com.livraria.model.Editora;
 import br.com.livraria.model.Livro;
+import br.com.livraria.util.FacesUtil;
 
 @ManagedBean
 @SessionScoped
@@ -23,7 +24,6 @@ public class LivroController {
 	private List<Autor> listaAutor;
 	private List<Editora> listaEditora;
 	private List<Livro> listaLivro;
-	private List<Carrinho> listaCarrinho;
 	private List<Livro> listaLivroBusca;
 
 	private Livro livro;
@@ -38,7 +38,6 @@ public class LivroController {
 
 	@PostConstruct
 	public void iniciar() {
-		listaCarrinho = new ArrayList<>();
 		livroBusca=new Livro();
 		listar();
 	}
@@ -78,11 +77,14 @@ public class LivroController {
 	}
 
 	public String adicionarCarrinho(Livro livro){
-		carrinho.setCliente(cliente);
 		carrinho.setLivro(livro);
 		carrinho.setQuantidade(new Integer(1));
-		listaCarrinho.add(carrinho);
+		FacesUtil.setAtributoSessaoWeb("carrinho", carrinho);
 		return "/restrito/cliente/carrinho.xhtml";
+	}
+	
+	public void removerCarrinho(){
+		
 	}
 	
 	public void buscar(){
@@ -183,13 +185,5 @@ public class LivroController {
 
 	public void setTituloSelecionado(String tituloSelecionado) {
 		this.tituloSelecionado = tituloSelecionado;
-	}
-
-	public List<Carrinho> getListaCarrinho() {
-		return listaCarrinho;
-	}
-
-	public void setListaCarrinho(List<Carrinho> listaCarrinho) {
-		this.listaCarrinho = listaCarrinho;
 	}
 }

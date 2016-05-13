@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+</h:head>
+<ui:composition template="/templates/layout.xhtml">
+	<ui:define name="titulo"> Carrinho </ui:define>
+
+	<ui:define name="corpo">
+		<h:form>
+			<p:dataScroller value="#{carrinhoController.listaCarrinho}" var="carrinho">
+				<h:panelGrid columns="3">
+					<h:panelGrid columns="2">
+						<p:graphicImage url="#{carrinho.livro.foto}" />
+						<h:panelGrid columns="1">
+							<h3>#{carrinho.livro.titulo}</h3>
+							<h2>#{carrinho.livro.autor.nome}</h2>
+						</h:panelGrid>
+					</h:panelGrid>
+					
+					<h:panelGrid columns="2">
+						<p:outputLabel value="Quantidade:"/>
+						<p:spinner value="#{carrinho.quantidade}"/>
+					</h:panelGrid>
+					
+					<p:commandButton value="Remover" action="#{carrinhoController.remover(carrinho)}"/>
+				</h:panelGrid>
+			</p:dataScroller>
+			
+			<p:commandButton value="Finalizar" action="#{carrinhoController.finalizar}"/>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

@@ -8,6 +8,8 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -32,9 +34,9 @@ public class Pedido implements Serializable{
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long id;
 	
-	@Column
+	@Enumerated(EnumType.STRING)
 	@NotNull(message="Título é obrigatório!")
-	private String statusPedido;
+	private Situacao statusPedido;
 	
 	@Temporal(TemporalType.DATE)
 	@NotNull(message="Data de Pedido é obrigatório!")
@@ -52,10 +54,10 @@ public class Pedido implements Serializable{
 	@NotNull(message="Cliente é obrigatório!")
 	private Cliente cliente;
 	
-	public String getStatusPedido() {
+	public Situacao getStatusPedido() {
 		return statusPedido;
 	}
-	public void setStatusPedido(String statusPedido) {
+	public void setStatusPedido(Situacao statusPedido) {
 		this.statusPedido = statusPedido;
 	}
 	public Date getDataPedido() {
