@@ -17,6 +17,7 @@ public class CarrinhoController {
 
 	private List<Carrinho> listaCarrinho = new ArrayList<>();
 
+	@SuppressWarnings("unchecked")
 	@PostConstruct
 	public void iniciar() {
 		listaCarrinho = (List<Carrinho>) FacesUtil.getAtributoSessaoWeb("listaCarrinho");

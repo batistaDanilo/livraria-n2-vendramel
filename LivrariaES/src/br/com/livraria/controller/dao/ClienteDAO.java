@@ -13,8 +13,8 @@ import br.com.livraria.util.FacesUtil;
 public class ClienteDAO {
 	private Session sessao=FacesUtil.getSessao("sessao");
 	
-	public void salvar(Cliente cliente){
-		sessao.merge(cliente);
+	public Cliente salvar(Cliente cliente){
+		return (Cliente) sessao.merge(cliente);
 	}
 	public void excluir(Cliente cliente){
 		sessao.delete(cliente);

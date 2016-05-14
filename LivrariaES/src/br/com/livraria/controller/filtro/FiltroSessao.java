@@ -1,4 +1,4 @@
-package br.com.livraria.util;
+package br.com.livraria.controller.filtro;
 
 import java.io.IOException;
 
@@ -12,6 +12,8 @@ import javax.servlet.annotation.WebFilter;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+
+import br.com.livraria.util.HibernateUtil;
 
 @WebFilter(servletNames="Faces Servlet")
 public class FiltroSessao implements Filter{

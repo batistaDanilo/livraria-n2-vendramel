@@ -15,7 +15,6 @@
 	
 	<ui:define name="corpo">
 		<h:form id="formLivro">
-			<p:messages closable="true" />
 			<p:commandButton value="Novo Livro" action="#{livroController.novo}"/>
 			<p:dataTable id="gridDados" value="#{livroController.listaLivro}" var="livro">
 				<p:column headerText="Descrição">
@@ -32,9 +31,10 @@
 					<p:commandButton value="Excluir" actionListener="#{livroController.excluir(livro)}" update="gridDados">
 						<p:confirm header="Aviso" message="Deseja realmente excluir o Livro?"/>
 					</p:commandButton>
-					<p:commandButton value="Adicionar ao carrinho" action="#{carrinhoController.finalizar(livro)}"/>
 				</p:column>
 			</p:dataTable>
+			
+			<p:commandButton value="Voltar" ajax="false" immediate="true" action="/restrito/adm/minhaPagina.xhtml?faces-redirect=true"/>
 			
 			<p:confirmDialog global="true" showEffect="fade" hideEffect="explode">
 				<p:commandButton value="Sim" type="button"

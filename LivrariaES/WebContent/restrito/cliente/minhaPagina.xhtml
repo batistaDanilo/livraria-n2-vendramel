@@ -18,21 +18,14 @@
 		
 			<p:toolbar>
 				<f:facet name="left">
-					Olá #{cliMinhaPaginaBean.cliente.nome} , seja bem vindo , o que deseja fazer :
+					Olá #{clienteController.cliente.nome} , seja bem vindo , o que deseja fazer :
 				</f:facet>
 			</p:toolbar>		
-			
 			<h:panelGrid columns="3" >
-					<p:commandButton value="Alterar Dados Cadastrais" style="width:325px;height:200px" action="/restrito/cliente/meuCadastro.xhtml?faces-redirect=true"/>
-					<p:commandButton value="Alterar senha" style="width:325px;height:200px" />
-					<p:commandButton value="Realizar Pedidos" style="width:325px;height:200px" action="/restrito/cliente/fazerPedido.xhtml?faces-redirect=true" />
-					<p:commandButton value="Meus Orçamentos" style="width:325px;height:200px" action="meusOrcamentos.xhtml?faces-redirect=true"/>
-<!-- 					<p:commandButton value="Visualizar Obras Concluidas" style="width:325px;height:200px" /> -->
-<!-- 					<p:commandButton value="Visualizar Solicitações" style="width:325px;height:200px" /> -->
-					<p:commandButton value="Avaliar Profissionais" style="width:325px;height:200px" action="/restrito/cliente/avaliarProfissionais.xhtml?faces-redirect=true"/>
+				<p:commandButton value="Meu Cadastro" style="width:325px;height:200px" action="/restrito/cliente/meuCadastro.xhtml?faces-redirect=true"/>
+				<p:commandButton value="Meus Pedidos" style="width:325px;height:200px" action="/restrito/cliente/meusPedidos.xhtml?faces-redirect=true"/>
+				<p:commandButton value="Meu Carrinho" style="width:325px;height:200px" action="/restrito/cliente/carrinho.xhtml?faces-redirect=true"/>
 			</h:panelGrid>
-				
-			
 		</h:form>
 	</ui:define>
 </ui:composition>

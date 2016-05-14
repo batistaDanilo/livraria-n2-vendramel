@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+</h:head>
+<ui:composition template="/templates/layout.xhtml">
+	<ui:define name="titulo">Meu Cadastro</ui:define>
+	
+	<ui:define name="corpo">
+		<h:form>
+			<p:fieldset legend="Segurança">
+			
+				<h:panelGrid columns="2" columnClasses="colunaLabel,colunaInput">
+					<p:outputLabel id="lblNomeUsuario" value="Nome do Usuário:" for="txtNomeUsuario" styleClass="labelSite" />
+					<p:inputText id="txtNomeUsuario"	value="#{administradorController.administrador.usuario}"
+						styleClass="inputSite" size="30" />
+						
+					<p:outputLabel id="lblSenha" value="Senha:" for="txtSenha" styleClass="labelSite" />
+					<p:password id="txtSenha" feedback="true" strongLabel="Bom"
+						weakLabel="Fraco" goodLabel="Médio" match="txtConfirmar" styleClass="inputSite"  />
+						
+					<p:outputLabel id="lblConfirmar" value="Confirmar Senha:"
+						for="txtConfirmar" styleClass="labelSite" />
+					<p:password id="txtConfirmar" feedback="true" strongLabel="Bom"
+						weakLabel="Fraco" value="#{administradorController.administrador.senha}"
+						goodLabel="Médio" styleClass="inputSite" />
+				</h:panelGrid>
+			</p:fieldset>
+			
+			<p:commandButton value="Atualizar" ajax="false" actionListener="#{administradorController.cadastrar}" action="/restrito/adm/minhaPagina.xhtml?faces-redirect=true"/>
+			<p:commandButton value="Voltar" ajax="false" immediate="true" action="/restrito/adm/minhaPagina.xhtml?faces-redirect=true"/>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

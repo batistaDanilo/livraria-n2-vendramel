@@ -10,15 +10,27 @@
 </h:head>
 <h:body>
 	<h:form id="formCabecalho">
-		<h:panelGrid columns="1" columnClasses="barraMenu"
-			styleClass="gridCabecalho">
+		<h:panelGrid columns="1" style="width:1000px;">
+			<p:graphicImage library="IMG" name="logo.png" width="300px" style="margin-left:-150px;left:50%;position: relative;"/>
+		</h:panelGrid>
+		<h:panelGrid id="gridCabecalho" columns="1" columnClasses="barraMenu"	styleClass="gridCabecalho">
 			<p:menubar autoDisplay="true">
-				<p:menuitem value="Consultar Autor" action="/restrito/adm/consultarAutor.xhtml" styleClass="subItemMenu" />
-				<p:menuitem value="Consultar Editora" styleClass="subItemMenu" url="/restrito/adm/consultarEditora.xhtml" />
-				<p:menuitem value="Consultar Livro" styleClass="subItemMenu" url="/restrito/adm/consultarLivro.xhtml" />
-				<p:menuitem value="Pedidos" styleClass="subItemMenu" url="/restrito/adm/pedidos.xhtml"/>
-				<p:menuitem value="Solicitações" styleClass="subItemMenu" url="/restrito/adm/solicitacoes.xhtml" />
-				<p:menuitem value="Usuários" styleClass="subItemMenu" url="/restrito/adm/usuarios.xhtml" />
+				<p:menuitem value="Início" action="/inicial.xhtml?faces-redirect=true" styleClass="subItemMenu" />
+				<p:menuitem value="Buscar Livro" action="/buscar.xhtml?faces-redirect=true" styleClass="subItemMenu" />
+				<p:menuitem value="Cadastre-se" styleClass="subItemMenu" action="/cadastrar.xhml?faces-redirect=true" update="gridCabecalho" rendered="#{loginController.eCliente==null}"/>
+				<p:menuitem value="Login" styleClass="subItemMenu" action="/login.xhml?faces-redirect=true" update="gridCabecalho" rendered="#{loginController.eCliente==null}"/>
+				<p:submenu label="Administração" rendered="#{loginController.eCliente!=null and loginController.eCliente==false}">
+					<p:menuitem value="Cadastro de Autor" action="/restrito/adm/consultarAutor.xhtmll?faces-redirect=true" styleClass="subItemMenu" />
+					<p:menuitem value="Cadastro de Editora" styleClass="subItemMenu" url="/restrito/adm/consultarEditora.xhtml?faces-redirect=true" />
+					<p:menuitem value="Cadastro de Livro" styleClass="subItemMenu" url="/restrito/adm/consultarLivro.xhtml?faces-redirect=true" />
+					<p:menuitem value="Pedidos" styleClass="subItemMenu" url="/restrito/adm/pedidos.xhtmll?faces-redirect=true"/>
+					<p:menuitem value="Sair" styleClass="subItemMenu" action="#{loginController.encerrarSessao}" update="gridCabecalho"/>
+				</p:submenu>
+				<p:submenu label="Espaço do Usuário" rendered="#{loginController.eCliente!=null and loginController.eCliente==true}">
+					<p:menuitem value="Meu Cadastro" action="/restrito/cliente/meuCadastro.xhtml?faces-redirect=true" styleClass="subItemMenu" />
+					<p:menuitem value="Meus Pedidos" action="/restrito/cliente/meusPedidos.xhtml?faces-redirect=true" styleClass="subItemMenu" />
+					<p:menuitem value="Sair" styleClass="subItemMenu" action="#{loginController.encerrarSessao}" update="gridCabecalho"/>
+				</p:submenu>
 			</p:menubar>
 		</h:panelGrid>
 	</h:form>

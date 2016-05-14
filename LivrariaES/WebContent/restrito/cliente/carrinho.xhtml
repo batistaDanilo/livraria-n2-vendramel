@@ -34,6 +34,7 @@
 			</p:dataScroller>
 			
 			<p:commandButton value="Finalizar" action="#{carrinhoController.finalizar}"/>
+			<p:commandButton value="Voltar" ajax="false" immediate="true" action="/restrito/cliente/carrinho.xhtml?faces-redirect=true"/>
 		</h:form>
 	</ui:define>
 </ui:composition>

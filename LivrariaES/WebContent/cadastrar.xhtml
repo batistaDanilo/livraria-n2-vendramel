@@ -22,52 +22,52 @@
 				<h:panelGrid id="gridDados" columns="2"	columnClasses="colunaLabel,colunaInput">
 					
 					<p:outputLabel id="lblCPF" value="CPF:" for="txtCPF" styleClass="labelSite" />
-					<p:inputMask id="txtCPF" value="#{cliCadastrarClienteBean.cliente.cpf}" mask="999.999.999-99"
+					<p:inputMask id="txtCPF" value="#{clienteController.cliente.cpf}" mask="999.999.999-99"
 						styleClass="inputSite" size="13" converter="retirarMascarasString">
 					</p:inputMask>
 					
 					<p:outputLabel id="lblNome" value="Nome:" for="txtNOME"	styleClass="labelSite" />
-					<p:inputText id="txtNOME" value="#{cliCadastrarClienteBean.cliente.nome}"
+					<p:inputText id="txtNOME" value="#{clienteController.cliente.nome}"
 						styleClass="inputSite" size="13"  />
 
 					<p:outputLabel id="lblSOBRENOME" value="Sobrenome:"	for="txtSobrenome" styleClass="labelSite" />
-					<p:inputText id="txtSobrenome" value="#{cliCadastrarClienteBean.cliente.sobrenome}"
+					<p:inputText id="txtSobrenome" value="#{clienteController.cliente.sobrenome}"
 						styleClass="inputSite" size="30"  />
 
 					<p:outputLabel id="lblNascimento" value="Data de Nascimento" for="txtNascimento" styleClass="labelSite" />
 					<p:inputMask id="txtNascimento" mask="99/99/9999"
-						value="#{cliCadastrarClienteBean.cliente.dataNascimento}"
+						value="#{clienteController.cliente.dataNascimento}"
 						styleClass="inputSite" size="10" >
 						<f:convertDateTime pattern="dd/MM/yyyy" locale="pt_BR" />
 					</p:inputMask>
 
 					<p:outputLabel id="lblLogradouro" value="Logradouro:" for="txtLogradouro" styleClass="labelSite" />
-					<p:inputText id="txtLogradouro"	value="#{cliCadastrarClienteBean.cliente.logadouro}"
+					<p:inputText id="txtLogradouro"	value="#{clienteController.cliente.logadouro}"
 						styleClass="inputSite" size="30"  />
 
 					<p:outputLabel id="lblNumero" value="Número:" for="txtNumero" styleClass="labelSite" />
-					<p:inputMask mask="9?9999" id="txtNumero"	value="#{cliCadastrarClienteBean.cliente.numero}"
+					<p:inputMask mask="9?9999" id="txtNumero"	value="#{clienteController.cliente.numero}"
 						styleClass="inputSite" converter="retirarMascarasNumero" size="5">
 					</p:inputMask>
 
 					<p:outputLabel id="lblComplemento" value="Complemento:"	for="txtComplemento" styleClass="labelSite" />
-					<p:inputText id="txtComplemento" value="#{cliCadastrarClienteBean.cliente.complemento}"
+					<p:inputText id="txtComplemento" value="#{clienteController.cliente.complemento}"
 						styleClass="inputSite" size="30" />
 
 					<p:outputLabel id="lblBairro" value="Bairro:" for="txtBairro" styleClass="labelSite" />
-					<p:inputText id="txtBairro"	value="#{cliCadastrarClienteBean.cliente.bairro}"
+					<p:inputText id="txtBairro"	value="#{clienteController.cliente.bairro}"
 						styleClass="inputSite" size="30"  />
 
 					<p:outputLabel id="lblCEP" value="CEP:" for="txtCEP" styleClass="labelSite" />
-					<p:inputMask id="txtCEP" value="#{cliCadastrarClienteBean.cliente.cep}" mask="99999-999"
+					<p:inputMask id="txtCEP" value="#{clienteController.cliente.cep}" mask="99999-999"
 						converter="retirarMascarasNumero" styleClass="inputSite" size="8" />
 
 					<p:outputLabel id="lblCidade" value="Cidade:" for="txtCidade" styleClass="labelSite" />
-					<p:inputText id="txtCidade"	value="#{cliCadastrarClienteBean.cliente.cidade}"
+					<p:inputText id="txtCidade"	value="#{clienteController.cliente.cidade}"
 						styleClass="inputSite" size="30"  />
 
 					<p:outputLabel id="lblUF" value="UF:" for="txtUF" styleClass="labelSite" />
-					<p:selectOneMenu id="txtUF" value="#{cliCadastrarClienteBean.cliente.uf}" styleClass="inputSite">
+					<p:selectOneMenu id="txtUF" value="#{clienteController.cliente.uf}" styleClass="inputSite">
 						<f:selectItem noSelectionOption="true" itemLabel="Selecione um Estado" />
 						<f:selectItem itemLabel="Acre" itemValue="AC" />
 						<f:selectItem itemLabel="Alagoas" itemValue="AL" />
@@ -102,25 +102,25 @@
 				<h:panelGrid id="gridContato" columns="2" columnClasses="colunaLabel,colunaInput">
 				
 					<p:outputLabel id="lblTelefone" value="Telefone:" for="txtTelefone"	styleClass="labelSite" />
-					<p:inputMask id="txtTelefone" mask="(99) 9999-9999"	value="#{cliCadastrarClienteBean.cliente.telefone}"
+					<p:inputMask id="txtTelefone" mask="(99) 9999-9999"	value="#{clienteController.cliente.telefone}"
 						styleClass="inputSite" converter="retirarMascarasString" size="13">
 					</p:inputMask>
 
 					<p:outputLabel id="lblCelular" value="Celular:" for="txtCelular" styleClass="labelSite" />
-					<p:inputMask id="txtCelular" mask="(99) 99999-9999"	value="#{cliCadastrarClienteBean.cliente.celular}"
+					<p:inputMask id="txtCelular" mask="(99) 99999-9999"	value="#{clienteController.cliente.celular}"
 						styleClass="inputSite" converter="retirarMascarasString" size="13"/>
 
 					<p:outputLabel id="lblEmail" value="Email:" for="txtEmail" styleClass="labelSite" />
-					<p:inputText id="txtEmail" value="#{cliCadastrarClienteBean.cliente.email}"
+					<p:inputText id="txtEmail" value="#{clienteController.cliente.email}"
 						styleClass="inputSite" size="30"  />
 
 					<p:outputLabel id="lblTelefoneRecado" value="Telefone para Recado:"
 						for="txtTelefoneRecado" styleClass="labelSite" />
-					<p:inputMask id="txtTelefoneRecado" mask="(99) 9999-9999" value="#{cliCadastrarClienteBean.cliente.telRecado}"
+					<p:inputMask id="txtTelefoneRecado" mask="(99) 9999-9999" value="#{clienteController.cliente.telRecado}"
 						styleClass="inputSite" converter="retirarMascarasString" size="13"/>
 
-					<p:outputLabel id="lblNomeRecado" value="Nome para Recado" for="txtNomeRecado" styleClass="labelSite" />
-					<p:inputText id="txtNomeRecado"	value="#{cliCadastrarClienteBean.cliente.nomeRecado}"
+					<p:outputLabel id="lblNomeRecado" value="Nome para Recado:" for="txtNomeRecado" styleClass="labelSite" />
+					<p:inputText id="txtNomeRecado"	value="#{clienteController.cliente.nomeRecado}"
 						styleClass="inputSite" size="30" />
 				</h:panelGrid>
 			</p:fieldset>
@@ -128,7 +128,10 @@
 			<p:fieldset legend="Segurança">
 			
 				<h:panelGrid columns="2" columnClasses="colunaLabel,colunaInput">
-				
+					<p:outputLabel id="lblNomeUsuario" value="Nome do Usuário:" for="txtNomeRecado" styleClass="labelSite" />
+					<p:inputText id="txtNomeUsuario"	value="#{clienteController.usuario.usuario}"
+						styleClass="inputSite" size="30" />
+						
 					<p:outputLabel id="lblSenha" value="Senha:" for="txtSenha" styleClass="labelSite" />
 					<p:password id="txtSenha" feedback="true" strongLabel="Bom"
 						weakLabel="Fraco" goodLabel="Médio" match="txtConfirmar" styleClass="inputSite"  />
@@ -136,12 +139,12 @@
 					<p:outputLabel id="lblConfirmar" value="Confirmar Senha:"
 						for="txtConfirmar" styleClass="labelSite" />
 					<p:password id="txtConfirmar" feedback="true" strongLabel="Bom"
-						weakLabel="Fraco" value="#{cliCadastrarClienteBean.cliente.senha}"
+						weakLabel="Fraco" value="#{clienteController.usuario.senha}"
 						goodLabel="Médio" styleClass="inputSite" />
 				</h:panelGrid>
 			</p:fieldset>
 			
-			<p:commandButton value="Cadastrar" ajax="false" actionListener="#{cliCadastrarClienteBean.cadastrar}" />
+			<p:commandButton value="Cadastrar" ajax="false" action="#{clienteController.cadastrar}" />
 		</h:form>
 	</ui:define>
 </ui:composition>

@@ -9,7 +9,6 @@ import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 
-import br.com.livraria.model.Cliente;
 import br.com.livraria.model.Usuario;
 import br.com.livraria.util.FacesUtil;
 
@@ -46,8 +45,8 @@ public class UsuarioDAO {
 
 	public Usuario buscarEmailSenha(String usuario,String senha){
 		
-		Criteria crit=sessao.createCriteria(Cliente.class);
-		crit.add(Restrictions.eq("email", usuario));
+		Criteria crit=sessao.createCriteria(Usuario.class);
+		crit.add(Restrictions.eq("usuario", usuario));
 		crit.add(Restrictions.eq("senha", FacesUtil.converterMD5(senha)));
 		return (Usuario) crit.uniqueResult();
 	}

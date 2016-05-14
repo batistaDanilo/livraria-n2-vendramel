@@ -25,6 +25,7 @@ public class Editora implements Serializable{
 
 	@NotNull(message="CNPJ é obrigatório!")
 	@CNPJ(message="O CNPJ inserido não é válido!")
+	@Column(unique=true)
 	private String cnpj;
 
 	@Column

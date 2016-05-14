@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+</h:head>
+<ui:composition template="/templates/layout.xhtml">
+	<ui:define name="titulo"> Minha Página </ui:define>
+	
+	<ui:define name="corpo">
+		<h:form>
+		
+			<p:toolbar>
+				<f:facet name="left">
+					Olá #{administradorController.administrador.usuario} , seja bem vindo , o que deseja fazer :
+				</f:facet>
+			</p:toolbar>		
+			<h:panelGrid columns="3" >
+				<p:commandButton value="Meu Cadastro" style="width:325px;height:200px" action="/restrito/adm/meuCadastro.xhtml?faces-redirect=true"/>
+				<p:commandButton value="Pedidos" style="width:325px;height:200px" action="/restrito/adm/consultarPedidos.xhtml?faces-redirect=true"/>
+				<p:commandButton value="Gerenciar Livros" style="width:325px;height:200px" action="/restrito/adm/consultarLivro.xhtml?faces-redirect=true"/>
+				<p:commandButton value="Gerenciar Autor" style="width:325px;height:200px" action="/restrito/adm/consultarAutor.xhtml?faces-redirect=true"/>
+				<p:commandButton value="Gerenciar Editora" style="width:325px;height:200px" action="/restrito/adm/consultarEditora.xhtml?faces-redirect=true"/>
+				<p:commandButton value="Gerenciar Usuários" style="width:325px;height:200px" action="/restrito/adm/consularUsuarios.xhtml?faces-redirect=true"/>
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

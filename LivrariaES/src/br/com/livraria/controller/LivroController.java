@@ -76,6 +76,7 @@ public class LivroController {
 		return "cadastrarLivro.xhtml?faces-redirect=true";
 	}
 
+	@SuppressWarnings("unchecked")
 	public String adicionarCarrinho(Livro livro){
 		carrinho = new Carrinho();
 		carrinho.setLivro(livro);
