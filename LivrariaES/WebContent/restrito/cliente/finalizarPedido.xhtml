@@ -33,7 +33,7 @@
 	
 									
 				<p:outputLabel value="Livros:"/>
-				<p:dataTable var="car" value="#{pedidoController.listaCarrinho}" paginator="true">
+				<p:dataTable var="car" value="#{carrinhoController.listaCarrinho}" paginator="true">
 					<p:column headerText="Livro">
 						<p:outputLabel value="#{car.livro.titulo}"/>
 					</p:column>
@@ -43,7 +43,8 @@
 						</p:outputLabel>
 					</p:column>
 					<p:column headerText="Quantidade">
-						<p:outputLabel value="#{car.quantidade}"/>
+						<!--  <p:outputLabel value="#{car.quantidade}"/> -->
+						<p:spinner id="minmax" min="1" max="#{car.livro.quantidade}" value="#{car.quantidade}"/>
 					</p:column>
 				</p:dataTable>
 			</h:panelGrid>

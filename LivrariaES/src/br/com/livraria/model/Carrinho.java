@@ -1,5 +1,7 @@
 package br.com.livraria.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,7 +14,9 @@ import javax.validation.constraints.NotNull;
 
 @Table
 @Entity
-public class Carrinho {
+public class Carrinho implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE)
@@ -84,9 +88,5 @@ public class Carrinho {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
-	}
-	
-	
-	
-	
+	}	
 }

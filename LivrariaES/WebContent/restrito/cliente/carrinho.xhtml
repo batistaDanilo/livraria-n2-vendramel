@@ -15,10 +15,9 @@
 
 	<ui:define name="corpo">
 		<h:form>
-			<p:dataScroller value="#{carrinhoController.listaCarrinho}" var="carrinho">
+			<p:dataScroller id="gridCarrinho" value="#{carrinhoController.listaCarrinho}" var="carrinho">
 				<h:panelGrid columns="3">
 					<h:panelGrid columns="2">
-						<p:graphicImage url="#{carrinho.livro.foto}" />
 						<h:panelGrid columns="1">
 							<h3>#{carrinho.livro.titulo}</h3>
 							<h2>#{carrinho.livro.autor.nome}</h2>
@@ -27,10 +26,10 @@
 					
 					<h:panelGrid columns="2">
 						<p:outputLabel value="Quantidade:"/>
-						<p:spinner value="#{carrinho.quantidade}"/>
+						<p:spinner id="minmax" min="1" max="#{carrinho.livro.quantidade}" value="#{carrinho.quantidade}"/>
 					</h:panelGrid>
 					
-					<p:commandButton value="Remover" action="#{carrinhoController.remover(carrinho)}"/>
+					<p:commandButton update="gridCarrinho" value="Remover" action="#{carrinhoController.remover(carrinho)}"/>
 				</h:panelGrid>
 			</p:dataScroller>
 			

@@ -77,10 +77,19 @@ public class LivroController {
 	}
 
 	public String adicionarCarrinho(Livro livro){
+		carrinho = new Carrinho();
 		carrinho.setLivro(livro);
 		carrinho.setQuantidade(new Integer(1));
-		FacesUtil.setAtributoSessaoWeb("carrinho", carrinho);
-		return "/restrito/cliente/carrinho.xhtml";
+		List<Carrinho>listaCarrinho = new ArrayList<>();
+		if(FacesUtil.getAtributoSessaoWeb("listaCarrinho") == null) {
+			listaCarrinho.add(carrinho);
+			FacesUtil.setAtributoSessaoWeb("listaCarrinho", listaCarrinho);
+		} else {
+			listaCarrinho = (List<Carrinho>) FacesUtil.getAtributoSessaoWeb("listaCarrinho");
+			listaCarrinho.add(carrinho);
+			FacesUtil.setAtributoSessaoWeb("listaCarrinho", listaCarrinho);
+		}
+		return "/restrito/cliente/carrinho.xhtml?faces-redirect=true";
 	}
 	
 	public void removerCarrinho(){

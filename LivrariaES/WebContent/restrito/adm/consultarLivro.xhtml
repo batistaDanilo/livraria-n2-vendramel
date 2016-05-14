@@ -32,6 +32,7 @@
 					<p:commandButton value="Excluir" actionListener="#{livroController.excluir(livro)}" update="gridDados">
 						<p:confirm header="Aviso" message="Deseja realmente excluir o Livro?"/>
 					</p:commandButton>
+					<p:commandButton value="Adicionar ao carrinho" action="#{carrinhoController.finalizar(livro)}"/>
 				</p:column>
 			</p:dataTable>
 			
