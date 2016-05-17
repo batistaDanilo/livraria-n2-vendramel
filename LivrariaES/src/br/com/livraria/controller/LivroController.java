@@ -30,7 +30,7 @@ public class LivroController {
 	private Livro livroBusca;
 	private Carrinho carrinho;
 	private Cliente cliente;
-	
+
 	private Editora editoraSelecionada;
 	private Autor autorSelecionado;
 	private String categoriaSelecionada;
@@ -38,7 +38,7 @@ public class LivroController {
 
 	@PostConstruct
 	public void iniciar() {
-		livroBusca=new Livro();
+		livroBusca = new Livro();
 		listar();
 	}
 
@@ -54,14 +54,15 @@ public class LivroController {
 		livroDAO.excluir(livro);
 		listar();
 	}
-	
-	public String editar(Livro livro){
-		this.livro=livro;
+
+	public String editar(Livro livro) {
+		this.livro = livro;
 		return "cadastrarLivro.xhtml?faces-redirect=true";
 	}
+
 	public void listar() {
 		LivroDAO livroDAO = new LivroDAO();
-		listaLivro= livroDAO.listar();
+		listaLivro = livroDAO.listar();
 
 		AutorDAO autorDAO = new AutorDAO();
 		listaAutor = autorDAO.listar();
@@ -77,12 +78,12 @@ public class LivroController {
 	}
 
 	@SuppressWarnings("unchecked")
-	public String adicionarCarrinho(Livro livro){
+	public String adicionarCarrinho(Livro livro) {
 		carrinho = new Carrinho();
 		carrinho.setLivro(livro);
 		carrinho.setQuantidade(new Integer(1));
-		List<Carrinho>listaCarrinho = new ArrayList<>();
-		if(FacesUtil.getAtributoSessaoWeb("listaCarrinho") == null) {
+		List<Carrinho> listaCarrinho = new ArrayList<>();
+		if (FacesUtil.getAtributoSessaoWeb("listaCarrinho") == null) {
 			listaCarrinho.add(carrinho);
 			FacesUtil.setAtributoSessaoWeb("listaCarrinho", listaCarrinho);
 		} else {
@@ -92,15 +93,17 @@ public class LivroController {
 		}
 		return "/restrito/cliente/carrinho.xhtml?faces-redirect=true";
 	}
-	
-	public void removerCarrinho(){
-		
+
+	public void removerCarrinho() {
+
 	}
-	
-	public void buscar(){
-		LivroDAO livroDAO=new LivroDAO();
-		listaLivroBusca=livroDAO.buscarCondicional(editoraSelecionada, autorSelecionado, tituloSelecionado, categoriaSelecionada);
+
+	public void buscar() {
+		LivroDAO livroDAO = new LivroDAO();
+		listaLivroBusca = livroDAO.buscarCondicional(editoraSelecionada, autorSelecionado, tituloSelecionado,
+				categoriaSelecionada);
 	}
+
 	public Carrinho getCarrinho() {
 		return carrinho;
 	}

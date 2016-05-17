@@ -28,26 +28,40 @@ public class PedidoController {
 	@PostConstruct
 	public void iniciar() {
 		this.listaCarrinho = (List<Carrinho>) FacesUtil.getAtributoSessaoWeb("listaCarrinho");
-		
-		novo();
-		this.pedido.setListaCarrinho(this.listaCarrinho);
-		
-		this.pedido.setDataPedido(new Date());
-		this.pedido.setValorTotal(calculaPrecoTotal());
+		if (this.listaCarrinho != null) {
+			novo();
+			this.pedido.setListaCarrinho(this.listaCarrinho);
 
-		Usuario usu = (Usuario) FacesUtil.getAtributoSessaoWeb("pessoa");
-		Cliente cli = usu.getCliente();
-		this.pedido.setCliente(cli);
+			this.pedido.setDataPedido(new Date());
+			this.pedido.setValorTotal(calculaPrecoTotal());
 
-		Situacao status = Situacao.AG;
-		this.pedido.setStatusPedido(status);
+			Usuario usu = (Usuario) FacesUtil.getAtributoSessaoWeb("pessoa");
+			Cliente cli = usu.getCliente();
+			this.pedido.setCliente(cli);
 
-		salvar();
+			Situacao status = Situacao.AG;
+			this.pedido.setStatusPedido(status);
+			
+			salvar();
+		} else {
+			listar();
+		}
+	}
+
+	public void listar() {
+		PedidoDAO pedidoDAO = new PedidoDAO();
+		listaPedido = pedidoDAO.listar();
 	}
 
 	public void salvar() {
-		PedidoDAO pedidoDao = new PedidoDAO();
-		pedidoDao.salvar(this.pedido);
+		PedidoDAO pedidoDAO = new PedidoDAO();
+		pedidoDAO.salvar(this.pedido);
+	}
+	
+	public void excluir(Pedido pedido) {
+		PedidoDAO pedidoDAO = new PedidoDAO();
+		pedidoDAO.excluir(pedido);
+		listar();
 	}
 
 	public Double calculaPrecoTotal() {

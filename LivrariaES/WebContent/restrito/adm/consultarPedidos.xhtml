@@ -12,10 +12,46 @@
 </h:head>
 <ui:composition template="/templates/layout.xhtml">
 	<ui:define name="titulo"> TITULO </ui:define>
-	
+
 	<ui:define name="corpo">
-		<h:form>
-			
+		<h:form id="formPedido">
+			<p:dataTable id="gridDados" value="#{pedidoController.listaPedido}"
+				var="pedido">
+				<p:column headerText="Data do pedido">
+					<p:outputLabel value="#{pedido.dataPedido}" >
+						<f:convertDateTime pattern="dd/MM/yyyy hh:mm:ss" locale="pt_BR"/>
+					</p:outputLabel>
+				</p:column>
+				<p:column headerText="Cliente">
+					<p:outputLabel value="#{pedido.cliente.nome} #{pedido.cliente.sobrenome}" />
+				</p:column>
+				<p:column headerText="Valor total">
+					<p:outputLabel value="#{pedido.valorTotal}">
+						<f:convertNumber type="currency" currencySymbol="R$" maxFractionDigits="2" minFractionDigits="2"/>
+					</p:outputLabel>
+				</p:column>
+				<p:column headerText="Status">
+					<p:outputLabel value="#{pedido.statusPedido.valor}" />
+				</p:column>
+				<p:column headerText="Ação">
+					<p:commandButton value="Excluir"
+						actionListener="#{pedidoController.excluir(pedido)}"
+						update="gridDados">
+						<p:confirm header="Aviso"
+							message="Deseja realmente excluir o Livro?" />
+					</p:commandButton>
+				</p:column>
+			</p:dataTable>
+
+			<p:commandButton value="Voltar" ajax="false" immediate="true"
+				action="/restrito/adm/minhaPagina.xhtml?faces-redirect=true" />
+
+			<p:confirmDialog global="true" showEffect="fade" hideEffect="explode">
+				<p:commandButton value="Sim" type="button"
+					styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+				<p:commandButton value="Não" type="button"
+					styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+			</p:confirmDialog>
 		</h:form>
 	</ui:define>
 </ui:composition>
