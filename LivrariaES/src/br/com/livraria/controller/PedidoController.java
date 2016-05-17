@@ -8,9 +8,11 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
+import br.com.livraria.controller.dao.PedidoDAO;
 import br.com.livraria.model.Carrinho;
 import br.com.livraria.model.Cliente;
 import br.com.livraria.model.Pedido;
+import br.com.livraria.model.Situacao;
 import br.com.livraria.model.Usuario;
 import br.com.livraria.util.FacesUtil;
 
@@ -26,13 +28,26 @@ public class PedidoController {
 	@PostConstruct
 	public void iniciar() {
 		this.listaCarrinho = (List<Carrinho>) FacesUtil.getAtributoSessaoWeb("listaCarrinho");
+		
 		novo();
+		this.pedido.setListaCarrinho(this.listaCarrinho);
+		
 		this.pedido.setDataPedido(new Date());
 		this.pedido.setValorTotal(calculaPrecoTotal());
-		
+
 		Usuario usu = (Usuario) FacesUtil.getAtributoSessaoWeb("pessoa");
 		Cliente cli = usu.getCliente();
 		this.pedido.setCliente(cli);
+
+		Situacao status = Situacao.AG;
+		this.pedido.setStatusPedido(status);
+
+		salvar();
+	}
+
+	public void salvar() {
+		PedidoDAO pedidoDao = new PedidoDAO();
+		pedidoDao.salvar(this.pedido);
 	}
 
 	public Double calculaPrecoTotal() {
