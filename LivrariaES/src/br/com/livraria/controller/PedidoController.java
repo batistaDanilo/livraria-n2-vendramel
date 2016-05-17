@@ -61,7 +61,7 @@ public class PedidoController {
 	}
 
 	public String salvar() {
-		if(this.pedido.getValorTotal() != 0){
+		if(this.pedido != null){
 			PedidoDAO pedidoDAO = new PedidoDAO();
 			pedidoDAO.salvar(this.pedido);
 			
@@ -81,8 +81,7 @@ public class PedidoController {
 		this.pedido = null;
 		this.listaCarrinho = null;
 		
-		List<Carrinho> listaCarrinhoNulo = new ArrayList<>();
-		FacesUtil.setAtributoSessaoWeb("listaCarrinho", listaCarrinhoNulo);
+		FacesUtil.getSessaoWeb().removeAttribute("listaCarrinho");
 		
 		return "/restrito/cliente/minhaPagina.xhtml?faces-redirect=true";
 	}
