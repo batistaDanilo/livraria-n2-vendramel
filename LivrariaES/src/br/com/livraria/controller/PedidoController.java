@@ -42,7 +42,7 @@ public class PedidoController {
 			Situacao status = Situacao.AG;
 			this.pedido.setStatusPedido(status);
 			
-			salvar();
+			//salvar();
 		} else {
 			listar();
 		}
@@ -53,15 +53,25 @@ public class PedidoController {
 		listaPedido = pedidoDAO.listar();
 	}
 
-	public void salvar() {
+	public String salvar() {
 		PedidoDAO pedidoDAO = new PedidoDAO();
 		pedidoDAO.salvar(this.pedido);
+		
+		return "/restrito/cliente/minhaPagina.xhtml?faces-redirect=true";
 	}
 	
 	public void excluir(Pedido pedido) {
 		PedidoDAO pedidoDAO = new PedidoDAO();
 		pedidoDAO.excluir(pedido);
 		listar();
+	}
+	
+	public String cancelar() {
+		this.pedido = null;
+		this.listaPedido = null;
+		this.listaCarrinho = null;
+		
+		return "/restrito/cliente/minhaPagina.xhtml?faces-redirect=true";
 	}
 
 	public Double calculaPrecoTotal() {

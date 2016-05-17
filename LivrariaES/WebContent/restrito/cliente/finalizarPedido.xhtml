@@ -14,43 +14,70 @@
 	<ui:define name="titulo"> Dados do Pedido</ui:define>
 	<ui:define name="corpo">
 		<h:form>
-			<h:panelGrid columns="1" >
-				<h:panelGrid columns="2" >
-					<p:outputLabel value="Data do Pedido"/>
+			<h:panelGrid columns="1">
+				<h:panelGrid columns="2">
+					<p:outputLabel value="Data do Pedido" />
 					<p:outputLabel value="#{pedidoController.pedido.dataPedido}">
-						<f:convertDateTime pattern="dd/MM/yyyy hh:mm:ss" locale="pt_BR"/>
+						<f:convertDateTime pattern="dd/MM/yyyy hh:mm:ss" locale="pt_BR" />
 					</p:outputLabel>
-					
-					<p:outputLabel value="Preço Total:"/>
+
+					<p:outputLabel value="Preço Total:" />
 					<p:outputLabel value="#{pedidoController.pedido.valorTotal}">
-						<f:convertNumber type="currency" currencySymbol="R$" maxFractionDigits="2" minFractionDigits="2"/>
+						<f:convertNumber type="currency" currencySymbol="R$"
+							maxFractionDigits="2" minFractionDigits="2" />
 					</p:outputLabel>
-					
-					<p:outputLabel value="Cliente:"/>
-					<p:outputLabel value="#{pedidoController.pedido.cliente.nome} #{pedidoController.pedido.cliente.sobrenome}"/>
-					
-					<p:outputLabel value="Endereço de entrega:"/>
-					<p:outputLabel value="#{pedidoController.pedido.cliente.logadouro}, #{pedidoController.pedido.cliente.numero},
+
+					<p:outputLabel value="Cliente:" />
+					<p:outputLabel
+						value="#{pedidoController.pedido.cliente.nome} #{pedidoController.pedido.cliente.sobrenome}" />
+
+					<p:outputLabel value="Endereço de entrega:" />
+					<p:outputLabel
+						value="#{pedidoController.pedido.cliente.logadouro}, #{pedidoController.pedido.cliente.numero},
 											#{pedidoController.pedido.cliente.bairro} - #{pedidoController.pedido.cliente.cidade} - 
-											#{pedidoController.pedido.cliente.uf}"/>
-					
+											#{pedidoController.pedido.cliente.uf}" />
+
 				</h:panelGrid>
-	
-									
-				<p:outputLabel value="Livros"/>
-				<p:dataTable var="pedido" value="#{pedidoController.listaCarrinho}" paginator="true">
+
+
+				<p:outputLabel value="Livros" />
+				<p:dataTable var="pedido" value="#{pedidoController.listaCarrinho}"
+					paginator="true">
 					<p:column headerText="Livro">
-						<p:outputLabel value="#{pedido.livro.titulo}"/>
+						<p:outputLabel value="#{pedido.livro.titulo}" />
 					</p:column>
 					<p:column headerText="Preço">
 						<p:outputLabel value="#{pedido.livro.precoCusto}">
-							<f:convertNumber type="currency" currencySymbol="R$" maxFractionDigits="2" minFractionDigits="2"/>
+							<f:convertNumber type="currency" currencySymbol="R$"
+								maxFractionDigits="2" minFractionDigits="2" />
 						</p:outputLabel>
 					</p:column>
 					<p:column headerText="Quantidade">
-						<p:outputLabel value="#{pedido.quantidade}"/>
+						<p:outputLabel value="#{pedido.quantidade}" />
 					</p:column>
 				</p:dataTable>
+
+				<p:dataTable var="pedidoController" value="#{pedidoController}">
+					<p:column headerText="Ação">
+						<p:commandButton value="Confirmar"
+							action="#{pedidoController.salvar()}"
+							immediate="true">
+							<p:confirm header="Aviso" message="Tem certeza que quer confirmar?" />
+						</p:commandButton>
+						<p:commandButton value="Cancelar"
+							action="#{pedidoController.cancelar()}"
+							immediate="true">
+							<p:confirm header="Aviso" message="Tem certeza que quer cancelar?" />
+						</p:commandButton>
+					</p:column>
+				</p:dataTable>
+				<p:confirmDialog global="true" showEffect="fade"
+					hideEffect="explode">
+					<p:commandButton value="Sim" type="button"
+						styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+					<p:commandButton value="Não" type="button"
+						styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+				</p:confirmDialog>
 			</h:panelGrid>
 		</h:form>
 	</ui:define>
