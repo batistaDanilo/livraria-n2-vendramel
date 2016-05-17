@@ -18,7 +18,7 @@
 				<h:panelGrid columns="2" >
 					<p:outputLabel value="Data do Pedido"/>
 					<p:outputLabel value="#{pedidoController.pedido.dataPedido}">
-						<f:convertDateTime pattern="dd/MM/yyyy kk:mm:ss"/>
+						<f:convertDateTime pattern="dd/MM/yyyy hh:mm:ss" locale="pt_BR"/>
 					</p:outputLabel>
 					
 					<p:outputLabel value="Preço Total:"/>
@@ -26,25 +26,29 @@
 						<f:convertNumber type="currency" currencySymbol="R$" maxFractionDigits="2" minFractionDigits="2"/>
 					</p:outputLabel>
 					
-					<p:outputLabel value="Cliente"/>
-					<p:outputLabel value="#{pedidoController.pedido.cliente.nome}"/>
+					<p:outputLabel value="Cliente:"/>
+					<p:outputLabel value="#{pedidoController.pedido.cliente.nome} #{pedidoController.pedido.cliente.sobrenome}"/>
+					
+					<p:outputLabel value="Endereço de entrega:"/>
+					<p:outputLabel value="#{pedidoController.pedido.cliente.logadouro}, #{pedidoController.pedido.cliente.numero},
+											#{pedidoController.pedido.cliente.bairro} - #{pedidoController.pedido.cliente.cidade} - 
+											#{pedidoController.pedido.cliente.uf}"/>
 					
 				</h:panelGrid>
 	
 									
-				<p:outputLabel value="Livros:"/>
-				<p:dataTable var="car" value="#{carrinhoController.listaCarrinho}" paginator="true">
+				<p:outputLabel value="Livros"/>
+				<p:dataTable var="pedido" value="#{pedidoController.listaCarrinho}" paginator="true">
 					<p:column headerText="Livro">
-						<p:outputLabel value="#{car.livro.titulo}"/>
+						<p:outputLabel value="#{pedido.livro.titulo}"/>
 					</p:column>
 					<p:column headerText="Preço">
-						<p:outputLabel value="#{car.livro.precoCusto}">
+						<p:outputLabel value="#{pedido.livro.precoCusto}">
 							<f:convertNumber type="currency" currencySymbol="R$" maxFractionDigits="2" minFractionDigits="2"/>
 						</p:outputLabel>
 					</p:column>
 					<p:column headerText="Quantidade">
-						<!--  <p:outputLabel value="#{car.quantidade}"/> -->
-						<p:spinner id="minmax" min="1" max="#{car.livro.quantidade}" value="#{car.quantidade}"/>
+						<p:outputLabel value="#{pedido.quantidade}"/>
 					</p:column>
 				</p:dataTable>
 			</h:panelGrid>

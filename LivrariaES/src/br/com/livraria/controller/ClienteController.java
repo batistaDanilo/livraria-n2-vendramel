@@ -11,34 +11,36 @@ import br.com.livraria.controller.dao.UsuarioDAO;
 import br.com.livraria.model.Cliente;
 import br.com.livraria.model.Usuario;
 import br.com.livraria.util.FacesUtil;
+
 @ManagedBean
 @ViewScoped
 public class ClienteController {
 	private Cliente cliente;
 	private Usuario usuario;
+
 	@PostConstruct
 	public void iniciar() {
-		Usuario usuario=(Usuario) FacesUtil.getAtributoSessaoWeb("pessoa");
-		
-		if(usuario!=null){
-			cliente=usuario.getCliente();
-			this.usuario=usuario;
-		}else{
+		Usuario usuario = (Usuario) FacesUtil.getAtributoSessaoWeb("pessoa");
+
+		if (usuario != null) {
+			cliente = usuario.getCliente();
+			this.usuario = usuario;
+		} else {
 			this.cliente = new Cliente();
-			this.usuario=new Usuario();
+			this.usuario = new Usuario();
 		}
 	}
 
 	public String cadastrar() {
 		ClienteDAO dao = new ClienteDAO();
-		cliente=dao.salvar(cliente);
-		
-		UsuarioDAO usuarioDAO=new UsuarioDAO();
+		cliente = dao.salvar(cliente);
+
+		UsuarioDAO usuarioDAO = new UsuarioDAO();
 		usuario.setCliente(cliente);
 		usuario.setDataCadastro(new Date());
 		usuario.setSenha(FacesUtil.converterMD5(usuario.getSenha()));
 		usuarioDAO.salvar(usuario);
-		
+
 		return "/login.xhtml?faces-redirect=true";
 	}
 

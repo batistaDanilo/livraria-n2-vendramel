@@ -27,14 +27,9 @@ public class CarrinhoController {
 		getListaCarrinho().remove(carrinho);
 	}
 
-	public String finalizar(Livro livro) {
-		Carrinho carrinho = new Carrinho();
-		carrinho.setLivro(livro);
-		carrinho.setQuantidade(1);
-		this.listaCarrinho.add(carrinho);
-		
+	public String finalizar() {
 		FacesUtil.setAtributoSessaoWeb("listaCarrinho", listaCarrinho);
-		return "/restrito/cliente/finalizarPedido.xhmtl";
+		return "/restrito/cliente/finalizarPedido.xhmtl?faces-redirect=true";
 	}
 
 	public List<Carrinho> getListaCarrinho() {
@@ -44,15 +39,5 @@ public class CarrinhoController {
 	public void setListaCarrinho(List<Carrinho> listaCarrinho) {
 		this.listaCarrinho = listaCarrinho;
 	}
-	
-	/*public void novoCarrinho(Livro livro) {
-		Carrinho carrinho = new Carrinho();
-		carrinho.setLivro(livro);
-		carrinho.setQuantidade(1);
-		this.listaCarrinho.add(carrinho);
-		
-		//finalizar();
-	}*/
-	
 	
 }

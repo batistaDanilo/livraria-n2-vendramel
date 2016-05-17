@@ -1,26 +1,72 @@
 package br.com.livraria.controller;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
-import br.com.livraria.model.Pedido;
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 
+import br.com.livraria.model.Carrinho;
+import br.com.livraria.model.Cliente;
+import br.com.livraria.model.Pedido;
+import br.com.livraria.model.Usuario;
+import br.com.livraria.util.FacesUtil;
+
+@ManagedBean
+@ViewScoped
 public class PedidoController {
-	
+
 	private Pedido pedido;
-	private List<Pedido> listaPedido;
-	
-	public void novo() {
-		pedido = new Pedido();	
+	private List<Pedido> listaPedido = new ArrayList<>();
+	private List<Carrinho> listaCarrinho = new ArrayList<>();
+
+	@SuppressWarnings("unchecked")
+	@PostConstruct
+	public void iniciar() {
+		this.listaCarrinho = (List<Carrinho>) FacesUtil.getAtributoSessaoWeb("listaCarrinho");
+		novo();
+		this.pedido.setDataPedido(new Date());
+		this.pedido.setValorTotal(calculaPrecoTotal());
+		
+		Usuario usu = (Usuario) FacesUtil.getAtributoSessaoWeb("pessoa");
+		Cliente cli = usu.getCliente();
+		this.pedido.setCliente(cli);
 	}
-	
+
+	public Double calculaPrecoTotal() {
+		Double total = 0.0;
+		for (int i = 0; i < listaCarrinho.size(); i++) {
+			total += (listaCarrinho.get(i).getQuantidade() * listaCarrinho.get(i).getLivro().getPrecoCusto());
+		}
+		return total;
+	}
+
+	public List<Carrinho> getListaCarrinho() {
+		return listaCarrinho;
+	}
+
+	public void setListaCarrinho(List<Carrinho> listaCarrinho) {
+		this.listaCarrinho = listaCarrinho;
+	}
+
+	public List<Pedido> getListaPedido() {
+		return listaPedido;
+	}
+
+	public void novo() {
+		this.pedido = new Pedido();
+	}
+
 	public void setPedido(Pedido pedido) {
 		this.pedido = pedido;
 	}
-	
+
 	public void setListaPedido(List<Pedido> listaPedido) {
 		this.listaPedido = listaPedido;
 	}
-	
+
 	public Pedido getPedido() {
 		return this.pedido;
 	}

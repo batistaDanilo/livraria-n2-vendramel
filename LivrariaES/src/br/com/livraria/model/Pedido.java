@@ -44,7 +44,7 @@ public class Pedido implements Serializable{
 	
 	@Column
 	@NotNull(message="Valor do Total é obrigatório!")
-	private BigDecimal valorTotal;
+	private Double valorTotal;
 	
 	@OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL,targetEntity=Carrinho.class,mappedBy="pedido")
 	@NotNull(message="Carrinho é obrigatório!")
@@ -66,10 +66,10 @@ public class Pedido implements Serializable{
 	public void setDataPedido(Date dataPedido) {
 		this.dataPedido = dataPedido;
 	}
-	public BigDecimal getValorTotal() {
+	public Double getValorTotal() {
 		return valorTotal;
 	}
-	public void setValorTotal(BigDecimal valorTotal) {
+	public void setValorTotal(Double valorTotal) {
 		this.valorTotal = valorTotal;
 	}
 	public Cliente getCliente() {
@@ -115,5 +115,7 @@ public class Pedido implements Serializable{
 		return true;
 	}
 
-	
+	public void somarTotal() {
+		
+	}
 }

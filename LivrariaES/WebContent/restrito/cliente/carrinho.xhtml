@@ -25,6 +25,11 @@
 					</h:panelGrid>
 					
 					<h:panelGrid columns="2">
+						<p:outputLabel value="Valor unitário:"/>
+						<p:outputLabel value="#{carrinho.livro.precoCusto}">
+							<f:convertNumber type="currency" currencySymbol="R$" maxFractionDigits="2" minFractionDigits="2"/>
+						</p:outputLabel>
+					
 						<p:outputLabel value="Quantidade:"/>
 						<p:spinner id="minmax" min="1" max="#{carrinho.livro.quantidade}" value="#{carrinho.quantidade}"/>
 					</h:panelGrid>
@@ -34,7 +39,7 @@
 			</p:dataScroller>
 			
 			<p:commandButton value="Finalizar" action="#{carrinhoController.finalizar}"/>
-			<p:commandButton value="Voltar" ajax="false" immediate="true" action="/restrito/cliente/carrinho.xhtml?faces-redirect=true"/>
+			<p:commandButton value="Voltar" ajax="false" immediate="true" action="/buscar.xhtml?faces-redirect=true"/>
 		</h:form>
 	</ui:define>
 </ui:composition>

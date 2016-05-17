@@ -54,11 +54,11 @@ public class Livro implements Serializable {
 	
 	@Column
 	@NotNull(message="Preço de Custo é obrigatório!")
-	private BigDecimal precoCusto;
+	private Double precoCusto;
 	
 	@Column
 	@NotNull(message="Margem de Lucro é obrigatório!")
-	private BigDecimal margemLucro;
+	private Double margemLucro;
 	
 	@Column
 	@NotNull(message="Quantidade é obrigatório!")
@@ -126,19 +126,19 @@ public class Livro implements Serializable {
 		this.indice = indice;
 	}
 
-	public BigDecimal getPrecoCusto() {
+	public Double getPrecoCusto() {
 		return precoCusto;
 	}
 
-	public void setPrecoCusto(BigDecimal precoCusto) {
+	public void setPrecoCusto(Double precoCusto) {
 		this.precoCusto = precoCusto;
 	}
 
-	public BigDecimal getMargemLucro() {
+	public Double getMargemLucro() {
 		return margemLucro;
 	}
 
-	public void setMargemLucro(BigDecimal margemLucro) {
+	public void setMargemLucro(Double margemLucro) {
 		this.margemLucro = margemLucro;
 	}
 
