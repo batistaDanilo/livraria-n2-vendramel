@@ -41,12 +41,20 @@ public class PedidoController {
 
 			Situacao status = Situacao.AG;
 			this.pedido.setStatusPedido(status);
+			
+			setIdPedidoCarrinho();
 
 		} else {
 			listar();
 		}
 	}
 
+	public void setIdPedidoCarrinho() {
+		for(int i = 0; i < this.listaCarrinho.size(); i++) {
+			this.listaCarrinho.get(i).setPedido(this.pedido);
+		}
+	}
+	
 	public void listar() {
 		PedidoDAO pedidoDAO = new PedidoDAO();
 		listaPedido = pedidoDAO.listar();
