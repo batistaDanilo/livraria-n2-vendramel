@@ -41,8 +41,7 @@ public class PedidoController {
 
 			Situacao status = Situacao.AG;
 			this.pedido.setStatusPedido(status);
-			
-			//salvar();
+
 		} else {
 			listar();
 		}
@@ -54,10 +53,14 @@ public class PedidoController {
 	}
 
 	public String salvar() {
-		PedidoDAO pedidoDAO = new PedidoDAO();
-		pedidoDAO.salvar(this.pedido);
-		
-		return "/restrito/cliente/minhaPagina.xhtml?faces-redirect=true";
+		if(this.pedido.getValorTotal() != 0){
+			PedidoDAO pedidoDAO = new PedidoDAO();
+			pedidoDAO.salvar(this.pedido);
+			
+			return "/restrito/cliente/minhaPagina.xhtml?faces-redirect=true";
+		} else {
+			return "/restrito/cliente/minhaPagina.xhtml?faces-redirect=true";
+		}
 	}
 	
 	public void excluir(Pedido pedido) {
@@ -68,8 +71,10 @@ public class PedidoController {
 	
 	public String cancelar() {
 		this.pedido = null;
-		this.listaPedido = null;
 		this.listaCarrinho = null;
+		
+		List<Carrinho> listaCarrinhoNulo = new ArrayList<>();
+		FacesUtil.setAtributoSessaoWeb("listaCarrinho", listaCarrinhoNulo);
 		
 		return "/restrito/cliente/minhaPagina.xhtml?faces-redirect=true";
 	}
