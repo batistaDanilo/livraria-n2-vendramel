@@ -79,6 +79,7 @@ public class LivroController {
 
 	@SuppressWarnings("unchecked")
 	public String adicionarCarrinho(Livro livro) {
+		livro.calculaPrecoVenda();
 		carrinho = new Carrinho();
 		carrinho.setLivro(livro);
 		carrinho.setQuantidade(new Integer(1));

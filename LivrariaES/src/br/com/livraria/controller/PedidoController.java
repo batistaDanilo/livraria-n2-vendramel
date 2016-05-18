@@ -89,7 +89,7 @@ public class PedidoController {
 	public Double calculaPrecoTotal() {
 		Double total = 0.0;
 		for (int i = 0; i < listaCarrinho.size(); i++) {
-			total += (listaCarrinho.get(i).getQuantidade() * listaCarrinho.get(i).getLivro().getPrecoCusto());
+			total += listaCarrinho.get(i).calculaPrecoTotal();
 		}
 		return total;
 	}

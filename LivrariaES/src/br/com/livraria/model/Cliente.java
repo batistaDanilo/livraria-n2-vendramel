@@ -30,32 +30,32 @@ public class Cliente implements Serializable{
 	private Long id;
 
 	@Column(length=11,unique=true)
-	@NotNull(message="CPF � obrigat�rio!")
-	@CPF(message="O CPF inserido n�o � v�lido!")
+	@NotNull(message="CPF é obrigatório!")
+	@CPF(message="O CPF inserido não é válido!")
 	private String cpf;
 
 	@Column
-	@NotNull(message="Nome � obrigat�rio!")
+	@NotNull(message="Nome é obrigatório!")
 	private String nome;
 
 	@Column
-	@NotNull(message="Sobrenome � obrigat�rio!")
+	@NotNull(message="Sobrenome é obrigatório!")
 	private String sobrenome;
 
 	@Temporal(TemporalType.DATE)
-	@NotNull(message="Data de Nascimento � obrigat�rio!")
+	@NotNull(message="Data de Nascimento é obrigatório!")
 	private Date dataNascimento;
 
 	@Column(length=10)
-	@NotNull(message="Telefone � obrigat�rio!")
+	@NotNull(message="Telefone é obrigatório!")
 	private String telefone;
 
 	@Column(length=11)
 	private String celular;
 
 	@Column(unique=true)
-	@NotNull(message="E-mail � obrigat�rio!")
-	@Email(message="E-Mail inv�lido!")
+	@NotNull(message="E-mail é obrigatório!")
+	@Email(message="E-Mail inválido!")
 	private String email;
 	
 	@Column(length=10)
@@ -65,11 +65,11 @@ public class Cliente implements Serializable{
 	private String nomeRecado;
 
 	@Column
-	@NotNull(message="Logradouro � obrigat�rio!")
+	@NotNull(message="Logradouro é obrigatório!")
 	private String logadouro;
 
 	@Column
-	@NotNull(message="N�mero � obrigat�rio!")
+	@NotNull(message="Número é obrigatório")
 	private String numero;
 
 	@Column

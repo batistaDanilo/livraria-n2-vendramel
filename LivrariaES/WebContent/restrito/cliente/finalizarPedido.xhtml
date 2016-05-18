@@ -47,7 +47,7 @@
 						<p:outputLabel value="#{pedido.livro.titulo}" />
 					</p:column>
 					<p:column headerText="Preço">
-						<p:outputLabel value="#{pedido.livro.precoCusto}">
+						<p:outputLabel value="#{pedido.livro.calculaPrecoVenda()}">
 							<f:convertNumber type="currency" currencySymbol="R$"
 								maxFractionDigits="2" minFractionDigits="2" />
 						</p:outputLabel>
