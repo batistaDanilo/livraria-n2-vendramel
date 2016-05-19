@@ -53,7 +53,7 @@ public class LivroDAO {
 	}
 	public Livro buscarPorCodigo(Long id){
 		
-		return sessao.load(Livro.class, id);
+		return sessao.get(Livro.class, id);
 	}
 
 }

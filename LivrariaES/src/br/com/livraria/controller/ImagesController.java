@@ -18,9 +18,10 @@ import br.com.livraria.model.Livro;
 @SessionScoped
 public class ImagesController {
 	
-	LivroDAO livroDAO = new LivroDAO();
+	
 	
     public StreamedContent mostrarImagem() throws IOException {
+    	LivroDAO livroDAO = new LivroDAO();
         FacesContext context = FacesContext.getCurrentInstance();
 
         if(true){
@@ -35,7 +36,7 @@ public class ImagesController {
             // So, browser is requesting the image. Return a real StreamedContent with the image bytes.
             String studentId = context.getExternalContext().getRequestParameterMap().get("livroID");
             Livro livro = livroDAO.buscarPorCodigo(Long.valueOf(studentId));
-            return new DefaultStreamedContent(new ByteArrayInputStream(livro.getImagem()));
+            return new DefaultStreamedContent(new ByteArrayInputStream(livro.getImagem()), "image/png");
         }
     }
 }

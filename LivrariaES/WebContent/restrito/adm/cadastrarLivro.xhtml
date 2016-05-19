@@ -20,13 +20,13 @@
 				<p:outputLabel  value="Titulo:" />
 				<p:inputText  value="#{livroController.livro.titulo}" size="13"  />
 				<p:outputLabel  value="Carregar Imagem:" />
-				<p:fileUpload fileUploadListener="#{livroController.handleFileUpload}" mode="advanced" dragDropSupport="false"
+				<p:fileUpload fileUploadListener="#{livroController.handleFileUpload}" mode="simple" dragDropSupport="false"
            			allowTypes="/(\.|\/)(jpe?g|png)$/" />	
 				<p:outputLabel  value="ISBN:" />
 				<p:inputText  value="#{livroController.livro.isbn}" size="13"  />
 				<p:outputLabel  value="Data de Publicação:" />
 				<p:inputMask  value="#{livroController.livro.dataPublicacao}" size="13" mask="99/99/9999">
-					<f:convertDateTime pattern="dd/mm/yyyy" locale="pt_BR"/>
+					<f:convertDateTime pattern="dd/MM/yyyy" locale="pt_BR"/>
 				</p:inputMask>
 				<p:outputLabel  value="Categoria:" />
 				<p:selectOneMenu value="#{livroController.livro.categoria}"  styleClass="inputSite">
