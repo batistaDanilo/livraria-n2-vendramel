@@ -20,8 +20,8 @@
 				<p:outputLabel  value="Titulo:" />
 				<p:inputText  value="#{livroController.livro.titulo}" size="13"  />
 				<p:outputLabel  value="Carregar Imagem:" />
-				<p:fileUpload fileUploadListener="#{livroController.handleFileUpload}" mode="simple" dragDropSupport="false"
-           			allowTypes="/(\.|\/)(jpe?g|png)$/" />	
+				<p:fileUpload fileLimit="1" fileUploadListener="#{livroController.handleFileUpload}"  mode="advanced" dragDropSupport="false"
+           			allowTypes="/(\.|\/)(jpe?g|png)$/" invalidFileMessage="Arquivo Inválido." fileLimitMessage="Escolha apenas uma imagem!" cancelLabel="calcelar" skinSimple="true"/>	
 				<p:outputLabel  value="ISBN:" />
 				<p:inputText  value="#{livroController.livro.isbn}" size="13"  />
 				<p:outputLabel  value="Data de Publicação:" />

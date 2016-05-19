@@ -16,7 +16,7 @@
 	<ui:define name="corpo">
 		<h:form id="formLivro">
 			<h:panelGrid id="gridDados" columns="2"	columnClasses="colunaLabel,colunaInput">
-				<p:graphicImage value="#{livroController.image}" height="300" width="200">
+				<p:graphicImage value="#{livroController.image}" cache="false" height="300" width="200">
 					<f:param name="livroID" value="#{livroController.livro.id}" />
 				</p:graphicImage>
 				<p:outputLabel value="" />
