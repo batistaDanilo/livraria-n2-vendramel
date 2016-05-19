@@ -19,6 +19,8 @@
 			
 				<p:outputLabel  value="Titulo:" />
 				<p:inputText  value="#{livroController.livro.titulo}" size="13"  />
+				<p:outputLabel  value="Carregar Imagem:" />
+				<p:fileUpload value="#{livroController.file}" mode="simple" skinSimple="true"/>
 				<p:outputLabel  value="ISBN:" />
 				<p:inputText  value="#{livroController.livro.isbn}" size="13"  />
 				<p:outputLabel  value="Data de Publicação:" />

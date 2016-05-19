@@ -1,7 +1,8 @@
 package br.com.livraria.model;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -9,11 +10,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
+
+import org.primefaces.model.DefaultStreamedContent;
+import org.primefaces.model.StreamedContent;
 
 @Entity
 @Table
@@ -31,6 +36,10 @@ public class Livro implements Serializable {
 	@Column
 	@NotNull(message="Título é obrigatório!")
 	private String titulo;
+	
+	@Lob
+	@Column
+	private byte[] imagem;
 	
 	@Column
 	@NotNull(message="ISBN é obrigatório!")
@@ -84,6 +93,29 @@ public class Livro implements Serializable {
 
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
+	}
+
+	public byte[] getImagem() {
+		return imagem;
+	}
+
+	public void setImagem(byte[] imagem) {
+		this.imagem = imagem;
+	}
+	
+	public StreamedContent getImagePrime(){
+	    InputStream in = null;
+	    StreamedContent sc;
+	    if(this.imagem != null){
+	        in = new ByteArrayInputStream(this.imagem);
+	    }
+
+	    if( in != null){
+	        sc  = new DefaultStreamedContent(in, "image/png");
+	    }else{
+	        sc = null; 
+	    }
+	         return sc;
 	}
 
 	public String getIsbn() {

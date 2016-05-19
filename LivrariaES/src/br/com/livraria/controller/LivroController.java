@@ -7,6 +7,8 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import org.primefaces.model.UploadedFile;
+
 import br.com.livraria.controller.dao.AutorDAO;
 import br.com.livraria.controller.dao.EditoraDAO;
 import br.com.livraria.controller.dao.LivroDAO;
@@ -35,6 +37,8 @@ public class LivroController {
 	private Autor autorSelecionado;
 	private String categoriaSelecionada;
 	private String tituloSelecionado;
+	
+	private UploadedFile file;
 
 	@PostConstruct
 	public void iniciar() {
@@ -198,5 +202,19 @@ public class LivroController {
 
 	public void setTituloSelecionado(String tituloSelecionado) {
 		this.tituloSelecionado = tituloSelecionado;
+	}
+
+	public UploadedFile getFile() {
+		return file;
+	}
+
+	public void setFile(UploadedFile file) {
+		this.file = file;
+		
+		if(null != this.file){
+			if(null != this.livro){
+				livro.setImagem(file.getContents());
+			}
+		}
 	}
 }
