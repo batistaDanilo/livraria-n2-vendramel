@@ -120,11 +120,18 @@ public class LivroController {
         setFile(event.getFile());
     }
 
+	public String buscaInicio(){
+		listar();
+		listaLivroBusca = new ArrayList<Livro>();
+		return "/buscar.xhtml?faces-redirect=true";
+	}
+	
 	public void buscar() {
 		LivroDAO livroDAO = new LivroDAO();
 		listaLivroBusca = livroDAO.buscarCondicional(editoraSelecionada, autorSelecionado, tituloSelecionado,
 				categoriaSelecionada);
 	}
+	
 
 	 public StreamedContent getImage() throws IOException {
 	    	LivroDAO livroDAO = new LivroDAO();

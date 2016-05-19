@@ -16,7 +16,7 @@
 		<h:panelGrid id="gridCabecalho" columns="1" columnClasses="barraMenu"	styleClass="gridCabecalho">
 			<p:menubar autoDisplay="true">
 				<p:menuitem value="Início" action="/inicial.xhtml?faces-redirect=true" styleClass="subItemMenu" />
-				<p:menuitem value="Buscar Livro" action="/buscar.xhtml?faces-redirect=true" styleClass="subItemMenu" />
+				<p:menuitem value="Buscar Livro" action="#{livroController.buscaInicio}" styleClass="subItemMenu" />
 				<p:menuitem value="Cadastre-se" styleClass="subItemMenu" action="/cadastrar.xhml?faces-redirect=true" update="gridCabecalho" rendered="#{loginController.eCliente==null}"/>
 				<p:menuitem value="Login" styleClass="subItemMenu" action="/login.xhml?faces-redirect=true" update="gridCabecalho" rendered="#{loginController.eCliente==null}"/>
 				<p:submenu label="Administração" rendered="#{loginController.eCliente!=null and loginController.eCliente==false}">
