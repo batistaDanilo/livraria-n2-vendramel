@@ -7,6 +7,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.UploadedFile;
 
 import br.com.livraria.controller.dao.AutorDAO;
@@ -108,6 +109,10 @@ public class LivroController {
 	public void removerCarrinho() {
 
 	}
+	
+	public void handleFileUpload(FileUploadEvent event) {
+        setFile(event.getFile());
+    }
 
 	public void buscar() {
 		LivroDAO livroDAO = new LivroDAO();
@@ -217,10 +222,9 @@ public class LivroController {
 
 	public void setFile(UploadedFile file) {
 		this.file = file;
-		
-		if(null != this.file){
-			if(null != this.livro){
-				livro.setImagem(file.getContents());
+		if(this.file != null){
+			if(this.livro != null){
+				livro.setImagem(this.file.getContents());
 			}
 		}
 	}

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+</h:head>
+<ui:composition template="/templates/layout.xhtml">
+	<ui:define name="titulo"> Cadastrar Livro </ui:define>
+	
+	<ui:define name="corpo">
+		<h:form id="formLivro">
+			<h:panelGrid id="gridDados" columns="2"	columnClasses="colunaLabel,colunaInput">
+			
+				<p:outputLabel  value="Titulo:" />
+				<p:outputLabel  value="#{livroController.livro.titulo}" />
+				<p:outputLabel  value="ISBN:" />
+				<p:outputLabel  value="#{livroController.livro.isbn}"  />
+				<p:outputLabel  value="Data de Publicação:" />
+				<p:outputLabel  value="#{livroController.livro.dataPublicacao}" >
+					<f:convertDateTime pattern="dd/MM/yyyy" locale="pt_BR"/>
+				</p:outputLabel>
+				<p:outputLabel  value="Categoria:" />
+				<p:outputLabel value="#{livroController.livro.categoria}" />
+				<p:outputLabel  value="Resumo:" />
+				<p:outputLabel  value="#{livroController.livro.resumo}"  />
+				<p:outputLabel  value="Índice:" />
+				<p:outputLabel  value="#{livroController.livro.indice}" />
+				<p:outputLabel  value="Editora:" />
+				<p:outputLabel value="#{livroController.livro.editora.nome}" />
+				<p:outputLabel  value="Autor:" />
+				<p:outputLabel value="#{livroController.livro.autor.nome}"  />
+				
+				<p:commandButton value="Voltar" immediate="true" action="buscar.xhtml?faces-redirect=true"/>
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>
