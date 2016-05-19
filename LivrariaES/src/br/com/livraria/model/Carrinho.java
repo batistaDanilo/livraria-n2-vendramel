@@ -32,6 +32,10 @@ public class Carrinho implements Serializable{
 	@ManyToOne
 	private Pedido pedido;
 	
+	public Double calculaPrecoTotal() {
+		Double precoTotal = this.livro.calculaPrecoVenda() * this.quantidade;
+		return precoTotal;
+	}
 
 	public Long getId() {
 		return id;

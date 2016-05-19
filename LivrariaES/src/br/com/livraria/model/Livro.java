@@ -79,6 +79,11 @@ public class Livro implements Serializable {
 	@OneToOne
 	private Autor autor;
 
+	public Double calculaPrecoVenda() {
+		Double precoVenda = this.getPrecoCusto() * (1 + this.getMargemLucro());
+		return precoVenda;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -171,7 +176,7 @@ public class Livro implements Serializable {
 	}
 
 	public void setMargemLucro(Double margemLucro) {
-		this.margemLucro = margemLucro;
+		this.margemLucro = margemLucro * 0.01;
 	}
 
 	public Integer getQuantidade() {

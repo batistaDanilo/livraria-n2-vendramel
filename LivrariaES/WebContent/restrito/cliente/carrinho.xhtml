@@ -26,7 +26,7 @@
 					
 					<h:panelGrid columns="2">
 						<p:outputLabel value="Valor unitário:"/>
-						<p:outputLabel value="#{carrinho.livro.precoCusto}">
+						<p:outputLabel value="#{carrinho.livro.calculaPrecoVenda()}">
 							<f:convertNumber type="currency" currencySymbol="R$" maxFractionDigits="2" minFractionDigits="2"/>
 						</p:outputLabel>
 					
