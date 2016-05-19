@@ -57,18 +57,24 @@
 								<h:panelGrid columns="2">
 									<p:outputLabel value="Autor" />
 									<p:outputLabel value="#{livro.autor.nome}" />
+									<p:outputLabel value="Valor" />
+									<p:outputLabel value="#{livro.valor}" >
+										<f:convertNumber type="currency" currencySymbol="R$" maxFractionDigits="2" minFractionDigits="2"/>
+									</p:outputLabel>
 									<p:outputLabel value="Editora" />
 									<p:outputLabel value="#{livro.editora.nome}" />
 									<p:outputLabel value="Categoria" />
 									<p:outputLabel value="#{livro.categoria}" />
+									
 								</h:panelGrid>
 								<h3>Resumo</h3>
 								<p:outputLabel value="#{livro.resumo}" />
 							</h:panelGrid>
 						</h:panelGroup>
-						<p:outputLabel value=""/>
-						
-						<p:commandButton action="#{livroController.adicionarCarrinho(livro)}" value="Adicionar ao Carrinho" />
+						<h:panelGrid columns="2">
+							<p:commandButton action="#{livroController.detalhar(livro)}" value="Detalhar"></p:commandButton>
+							<p:commandButton action="#{livroController.adicionarCarrinho(livro)}" value="Adicionar ao Carrinho" />
+						</h:panelGrid>
 					</h:panelGrid>
 				</p:dataScroller>
 

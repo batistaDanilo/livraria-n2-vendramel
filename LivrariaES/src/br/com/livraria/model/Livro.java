@@ -122,6 +122,10 @@ public class Livro implements Serializable {
 	    }
 	         return sc;
 	}
+	
+	public Double getValor(){
+		return calculaPrecoVenda();
+	}
 
 	public String getIsbn() {
 		return isbn;

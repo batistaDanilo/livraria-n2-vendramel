@@ -34,7 +34,7 @@ private Session sessao=FacesUtil.getSessao("sessao");
 	
 	public Editora buscarPorCodigo(Long id){
 		
-		return sessao.load(Editora.class, id);
+		return sessao.get(Editora.class, id);
 	}
 
 }

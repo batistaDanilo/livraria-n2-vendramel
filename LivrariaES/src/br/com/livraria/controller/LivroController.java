@@ -58,6 +58,12 @@ public class LivroController {
 		livroDAO.excluir(livro);
 		listar();
 	}
+	
+	public String detalhar(Livro livro) {
+		this.livro = livro;
+		return "detalheLivro.xhtml?faces-redirect=true";
+	}
+	
 
 	public String editar(Livro livro) {
 		this.livro = livro;

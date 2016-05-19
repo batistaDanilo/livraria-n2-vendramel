@@ -34,7 +34,7 @@ public class AutorDAO {
 	
 	public Autor buscarPorCodigo(Long id){
 		
-		return sessao.load(Autor.class, id);
+		return sessao.get(Autor.class, id);
 	}
 	
 }
