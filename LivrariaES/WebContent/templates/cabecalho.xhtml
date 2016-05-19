@@ -23,7 +23,7 @@
 					<p:menuitem value="Cadastro de Autor" action="/restrito/adm/consultarAutor.xhtmll?faces-redirect=true" styleClass="subItemMenu" />
 					<p:menuitem value="Cadastro de Editora" styleClass="subItemMenu" url="/restrito/adm/consultarEditora.xhtml?faces-redirect=true" />
 					<p:menuitem value="Cadastro de Livro" styleClass="subItemMenu" url="/restrito/adm/consultarLivro.xhtml?faces-redirect=true" />
-					<p:menuitem value="Pedidos" styleClass="subItemMenu" url="/restrito/adm/pedidos.xhtml?faces-redirect=true"/>
+					<p:menuitem value="Pedidos" styleClass="subItemMenu" url="/restrito/adm/consultarPedidos.xhtml?faces-redirect=true"/>
 					<p:menuitem value="Sair" styleClass="subItemMenu" action="#{loginController.encerrarSessao}" update="gridCabecalho"/>
 				</p:submenu>
 				<p:submenu label="Espaço do Usuário" rendered="#{loginController.eCliente!=null and loginController.eCliente==true}">
