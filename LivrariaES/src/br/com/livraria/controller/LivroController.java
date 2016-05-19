@@ -96,6 +96,7 @@ public class LivroController {
 	}
 
 	public String novo() {
+		listar();
 		livro = new Livro();
 		return "cadastrarLivro.xhtml?faces-redirect=true";
 	}
