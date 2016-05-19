@@ -1,7 +1,12 @@
 package br.com.livraria.controller;
 
 import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +15,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.PhaseId;
+import javax.servlet.ServletContext;
 
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.DefaultStreamedContent;
@@ -147,8 +153,26 @@ public class LivroController {
 	        }
 	        else {
 	            // So, browser is requesting the image. Return a real StreamedContent with the image bytes.
-	            String studentId = context.getExternalContext().getRequestParameterMap().get("livroID");
-	            Livro livro = livroDAO.buscarPorCodigo(Long.valueOf(studentId));
+	        	String local = context.getExternalContext().getRequestParameterMap().get("local");
+	        	
+	        	if(local != null){
+	        		if("true".equalsIgnoreCase(local)){
+	        			if(null != livro.getImagem()){
+	        				return new DefaultStreamedContent(new ByteArrayInputStream(livro.getImagem()), "image/png");
+	        			}
+	        			FacesContext aFacesContext = FacesContext.getCurrentInstance();
+	                    ServletContext contextS = (ServletContext) aFacesContext.getExternalContext().getContext();
+	                    String realPath = contextS.getRealPath("/");
+	                    
+	                    Path path = Paths.get(realPath+"/resources/IMG/sem-imagem.png");
+	                    byte[] data = Files.readAllBytes(path);
+	                    livro.setImagem(data);
+	                    return new DefaultStreamedContent(new ByteArrayInputStream(data), "image/png");
+	        			
+	        		}
+	        	}
+	            String livroID = context.getExternalContext().getRequestParameterMap().get("livroID");
+	            Livro livro = livroDAO.buscarPorCodigo(Long.valueOf(livroID));
 	            return new DefaultStreamedContent(new ByteArrayInputStream(livro.getImagem()), "image/png");
 	        }
 	    }
@@ -258,6 +282,7 @@ public class LivroController {
 		if(this.file != null){
 			if(this.livro != null){
 				livro.setImagem(this.file.getContents());
+				byte[] teste = livro.getImagem();
 			}
 		}
 	}
