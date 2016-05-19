@@ -44,7 +44,7 @@ public class LivroDAO {
 		if(autor!=null)
 			crit.add(Restrictions.eq("autor", autor));
 		if(titulo!=null && titulo!="")
-			crit.add(Restrictions.like("titulo", titulo));
+			crit.add(Restrictions.like("titulo", "%" + titulo + "%"));
 		if(categoria!=null && categoria!="")
 			crit.add(Restrictions.eq("categoria", categoria));
 		
