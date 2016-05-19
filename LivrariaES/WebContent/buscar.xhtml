@@ -48,8 +48,8 @@
 				<p:dataScroller id="buscaGrid" value="#{livroController.listaLivroBusca}" var="livro"
 					chunkSize="10" scrollHeight="500">
 					<h:panelGrid columns="2">
-						<h:graphicImage value="#{livro.imagePrime}"  />
-
+						<p:graphicImage value="#{imagesController.mostrarImagem}" />
+							<f:param name="livroID" value="#{livro.id}" />
 						<h:panelGroup>
 							<h:panelGrid columns="1">
 								<h2>Titulo: #{livro.titulo}</h2>
