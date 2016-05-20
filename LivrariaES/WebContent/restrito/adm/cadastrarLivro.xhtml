@@ -22,7 +22,7 @@
 				<p:outputLabel  value="Carregar Imagem:" />
 				<p:fileUpload  update="image" fileUploadListener="#{livroController.handleFileUpload}"  mode="advanced" dragDropSupport="false"
            			allowTypes="/(\.|\/)(jpe?g|png)$/" invalidFileMessage="Utilize arquivos .png" fileLimitMessage="Escolha apenas uma imagem!" cancelLabel="calcelar" 
-           			skinSimple="true" sizeLimit="500000" invalidSizeMessage="Tamanho máximo permitido 500kb"/>	
+           			skinSimple="true" sizeLimit="1000000" invalidSizeMessage="Tamanho máximo permitido 500kb"/>	
 				<p:outputLabel value=""/>
 				<p:graphicImage id="image" value="#{livroController.image}" cache="false" height="180" width="130" style="padding-right: 30px;">
 					<f:param name="local" value="true" />
