@@ -69,7 +69,8 @@
 					<f:selectItems value="#{livroController.listaAutor}" var="autor" itemLabel="#{autor.nome}" itemValue="#{autor}"/>
 				</p:selectOneMenu>
 				
-				<p:commandButton value="Cadastrar" ajax="false" action="#{livroController.cadastrar}"/>
+				<p:commandButton value="Cadastrar" ajax="false" action="#{livroController.cadastrar(false)}" rendered="${livroController.livro.id==null}"/>
+				<p:commandButton value="Atualizar" ajax="false" action="#{livroController.cadastrar(true)}" rendered="${livroController.livro.id!=null}"/>
 				<p:commandButton value="Voltar" immediate="true" action="consultarLivro.xhtml?faces-redirect=true"/>
 			</h:panelGrid>
 		</h:form>

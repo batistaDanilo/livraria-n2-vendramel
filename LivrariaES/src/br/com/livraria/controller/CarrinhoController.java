@@ -8,7 +8,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import br.com.livraria.model.Carrinho;
-import br.com.livraria.model.Livro;
 import br.com.livraria.util.FacesUtil;
 
 @ManagedBean

@@ -59,9 +59,20 @@ public class LivroController {
 		listar();
 	}
 
-	public String cadastrar() {
+	public String cadastrar(boolean atualizar) {
 		LivroDAO livroDAO = new LivroDAO();
-		livroDAO.salvar(livro);
+		Livro aux=new Livro();
+		aux.setIsbn(livro.getIsbn());
+		if(atualizar==true){
+			livroDAO.salvar(livro);
+		}else{
+			if(livroDAO.buscarPreenchido(aux).isEmpty()){
+				livroDAO.salvar(livro);
+			}else{
+				FacesUtil.addMsgErro("ISBN já cadastrado!");
+				return "";
+			}
+		}
 		listar();
 		return "/restrito/adm/consultarLivro.xhtml?faces-redirect=true";
 	}
