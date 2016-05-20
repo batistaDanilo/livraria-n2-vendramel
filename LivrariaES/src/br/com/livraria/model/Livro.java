@@ -80,7 +80,7 @@ public class Livro implements Serializable {
 	private Autor autor;
 
 	public Double calculaPrecoVenda() {
-		Double precoVenda = ((this.getPrecoCusto() * this.getMargemLucro())/100);
+		Double precoVenda = this.getPrecoCusto() + (this.getPrecoCusto() * this.getMargemLucro()/100);
 		return precoVenda;
 	}
 

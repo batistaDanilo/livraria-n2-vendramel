@@ -22,6 +22,10 @@
 				<p:outputLabel value="" />
 				<p:outputLabel  value="Titulo:" />
 				<p:outputLabel  value="#{livroController.livro.titulo}" />
+				<p:outputLabel value="Valor:" />
+				<p:outputLabel value="#{livroController.livro.valor}" >
+					<f:convertNumber type="currency" currencySymbol="R$" maxFractionDigits="2" minFractionDigits="2"/>
+				</p:outputLabel>
 				<p:outputLabel  value="ISBN:" />
 				<p:outputLabel  value="#{livroController.livro.isbn}"  />
 				<p:outputLabel  value="Data de Publicação:" />
